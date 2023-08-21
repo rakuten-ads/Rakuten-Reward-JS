@@ -160,7 +160,7 @@ const displayCustomNotifUI = () => console.log("Display UI");
 try {
 	const response = await rewardSDK.logAction({ actionCode: "ABCD123456" });
 
-	const isAchieveMissionSuccess = response.success; // check if achieve mission success
+	const isAchieveMissionSuccess = response.success && response.achieved; // check if achieve mission success
 	const isCustomNotification = response.mission.notificationtype === "CUSTOM"; // check if the notification for the mission is CUSTOM
 	const isUIEnabled = rewardSDK.getUIEnabled(); // check if the user enables UI Notification feature
 

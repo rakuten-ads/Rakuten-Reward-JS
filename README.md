@@ -147,9 +147,9 @@ rewardSDK.displayLoginButton(elementId); // calling this function will fill the 
 
 ## `Pass the Login State to SDK`
 
-In order to use your existing Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
+In order to use your existing API-C Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
 
-1. Visit API-C Scope page.
+1. Visit API-C Scope page
 2. Create client or use your existing client.
 3. Search for our scope and apply. Scope Name: `mission-sdk`, Organization: `Reward SDK`.
 4. Mission SDK Team will approve it.
