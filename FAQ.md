@@ -41,9 +41,9 @@ No, because browsers don't have access to collect user's Advertising ID (Ad-ID).
 
 ```javascript
 rewardSDK.init({
-  appKey: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  language: 'ja',
-  adId: 'ABCD1234567H',
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
+	adId: "ABCD1234567H",
 });
 ```
 
@@ -67,11 +67,11 @@ That's why you can't log action directly after init the JS SDK like this:
 
 ```javascript
 rewardSDK.init({
-  appKey: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  language: 'ja',
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
 });
 
-rewardSDK.logAction({ actionCode: 'ABCD123456' }); // this function will return error, because Mission JS SDK isn't finished initialized.
+rewardSDK.logAction({ actionCode: "ABCD123456" }); // this function will return error, because Mission JS SDK isn't finished initialized.
 ```
 
 In order to log the action or call any callbacks after JS SDK finishes the initialization, you can pass the `successCallback` function during the initialization.
@@ -80,12 +80,12 @@ In order to log the action or call any callbacks after JS SDK finishes the initi
 const rewardSDK = window.RewardMissionSDK || {};
 
 rewardSDK.init({
-  appKey: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  language: 'ja',
-  successCallback: () => {
-    console.log('Callback after JS SDK Init');
-    rewardSDK.logAction({ actionCode: 'ABCD123456' }); // log this action after SDK initialization finished.
-  },
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
+	successCallback: () => {
+		console.log("Callback after JS SDK Init");
+		rewardSDK.logAction({ actionCode: "ABCD123456" }); // log this action after SDK initialization finished.
+	},
 });
 ```
 
@@ -106,12 +106,12 @@ But, if the user hasn't completed all the actions, then they can't claim the poi
 
 ```javascript
 // async/await supported
-const missionResponse = await rewardSDK.logAction({ actionCode: 'ABCD12345' });
+const missionResponse = await rewardSDK.logAction({ actionCode: "ABCD12345" });
 missionResponse.claimPointMission();
 
 // Promise-based
-reward.logAction({ actionCode: 'ABCD12345' }).then((missionResponse) => {
-  missionResponse.claimPointMission();
+reward.logAction({ actionCode: "ABCD12345" }).then((missionResponse) => {
+	missionResponse.claimPointMission();
 });
 ```
 
@@ -121,16 +121,16 @@ reward.logAction({ actionCode: 'ABCD12345' }).then((missionResponse) => {
 // async/await supported
 const unclaimedItems = await rewardSDK.getUnclaimedItems();
 const targetMission = unclaimedItems.find(
-  (unclaimedItem) => unclaimedItem.actionCode === 'ABCDE123456'
+	(unclaimedItem) => unclaimedItem.actionCode === "ABCDE123456"
 );
 if (targetMission) targetMission.claimPointMission();
 
 // Promise-based
 reward.getUnclaimedItems().then((unclaimedItems) => {
-  const targetMission = unclaimedItems.find(
-    (unclaimedItem) => unclaimedItem.actionCode === 'ABCDE123456'
-  );
-  if (targetMission) targetMission.claimPointMission();
+	const targetMission = unclaimedItems.find(
+		(unclaimedItem) => unclaimedItem.actionCode === "ABCDE123456"
+	);
+	if (targetMission) targetMission.claimPointMission();
 });
 ```
 
@@ -155,21 +155,21 @@ rewardSDK.logout();
 For example, we have Mission A and we want to display custom Notification UI after the user achieved the mission.
 
 ```javascript
-const displayCustomNotifUI = () => console.log('Display UI');
+const displayCustomNotifUI = () => console.log("Display UI");
 
 try {
-  const response = await rewardSDK.logAction({ actionCode: 'ABCD123456' });
+	const response = await rewardSDK.logAction({ actionCode: "ABCD123456" });
 
-  const isAchieveMissionSuccess = response.success; // check if achieve mission success
-  const isCustomNotification = response.mission.notificationtype === 'CUSTOM'; // check if the notification for the mission is CUSTOM
-  const isUIEnabled = rewardSDK.getUIEnabled(); // check if the user enables UI Notification feature
+	const isAchieveMissionSuccess = response.success; // check if achieve mission success
+	const isCustomNotification = response.mission.notificationtype === "CUSTOM"; // check if the notification for the mission is CUSTOM
+	const isUIEnabled = rewardSDK.getUIEnabled(); // check if the user enables UI Notification feature
 
-  if (isAchieveMissionSuccess && isCustomNotification && isUIEnabled) {
-    // Display Custom Notification UI here.
-    displayCustomNotifUI();
-  }
+	if (isAchieveMissionSuccess && isCustomNotification && isUIEnabled) {
+		// Display Custom Notification UI here.
+		displayCustomNotifUI();
+	}
 } catch (e) {
-  // do some error handling
+	// do some error handling
 }
 ```
 
@@ -182,21 +182,21 @@ try {
 Yes, it is possible to pass the detect SDK Portal closed event by providing the `closeCallback` when calling the `displaySDKPortal` or when displaying our Button to open SDK Portal.
 
 ```javascript
-const closeCallback = () => console.log('SDK Portal Closed');
+const closeCallback = () => console.log("SDK Portal Closed");
 
 // call displaySDKPortal function
 rewardSDK.displaySDKPortal({ closeCallback });
 
 // display SDK Portal from SDK Button
-const sdkPortalButtonElementId = 'sdk-portal-button';
+const sdkPortalButtonElementId = "sdk-portal-button";
 rewardSDK.displayPortalButton(sdkPortalButtonElementId, { closeCallback });
 
 // display Reward Icon to open SDK Portal
-const sdkPortalRewardIconElementId = 'sdk-portal-reward-icon';
+const sdkPortalRewardIconElementId = "sdk-portal-reward-icon";
 rewardSDK.displayRewardIcon(
-  sdkPortalRewardIconElementId,
-  { position: 'topRight' },
-  { closeCallback }
+	sdkPortalRewardIconElementId,
+	{ position: "topRight" },
+	{ closeCallback }
 );
 ```
 

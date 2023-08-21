@@ -62,11 +62,10 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 ```html
 <header>
-  // ... put this before the end of header tag
-  <script
-    type="text/javascript"
-    src="https://ad-proxy.reward.rakuten.co.jp/sdk-ad/resources/sdk/missionsdk.js"
-  ></script>
+	// ... put this before the end of header tag
+	<script
+		type="text/javascript"
+		src="https://ad-proxy.reward.rakuten.co.jp/sdk-ad/resources/sdk/missionsdk.js"></script>
 </header>
 ```
 
@@ -74,7 +73,7 @@ After pasting the script, Mission SDK JS will be available and can be accessed i
 
 ```html
 <script>
-  const rewardSDK = window.RewardMissionSDK || {};
+	const rewardSDK = window.RewardMissionSDK || {};
 </script>
 ```
 
@@ -90,8 +89,8 @@ To use Mission SDK, you need to call our `init` function and pass the `Applicati
 const rewardSDK = window.RewardMissionSDK || {};
 
 rewardSDK.init({
-  appKey: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  language: 'ja',
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
 });
 ```
 
@@ -142,20 +141,18 @@ window.location.href = loginUrl;
 <img src="assets/login-button.png" alt="Mission SDK Login Button" width="240"/>
 
 ```javascript
-const elementId = 'sdk-login-button-element-id';
+const elementId = "sdk-login-button-element-id";
 rewardSDK.displayLoginButton(elementId); // calling this function will fill the 'sdk-login-button-element-id' element with SDK Login Button
 ```
 
 ## `Pass the Login State to SDK`
 
-In order to use your existing API-C Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
+In order to use your existing Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
 
-1. Visit API-C Scope page: https://gateway-dashboard.intra.rakuten-it.com/#!/scopes
+1. Visit API-C Scope page.
 2. Create client or use your existing client.
 3. Search for our scope and apply. Scope Name: `mission-sdk`, Organization: `Reward SDK`.
 4. Mission SDK Team will approve it.
-
-Reference: https://confluence.rakuten-it.com/confluence/display/ACUS/RToken#RToken-OnboardingflowforClients(ConsumeAPIwithRTokenAuthentication)
 
 If you already have Refresh Token and Access Token from Rakuten OMNI and want to keep the login state between your website and Mission SDK, you can pass the Access Token and Refresh Token when initializing the SDK.
 
@@ -163,11 +160,11 @@ To use this feature and to make sure all the functionalities work (including ref
 
 ```javascript
 rewardSDK.init({
-  appKey: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  language: 'ja',
-  accessToken: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  refreshToken: 'QWERTYUIOPASDFGHJKLZXCVBNM123456789',
-  userName: 'John Doe',
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
+	accessToken: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	refreshToken: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	userName: "John Doe",
 });
 ```
 
@@ -199,7 +196,7 @@ const isSignedIn = await rewardSDK.hasUserSignedIn();
 
 // Promise-based
 rewardSDK.hasUserSignedIn().then((isSignedIn) => {
-  console.log(isSignedIn);
+	console.log(isSignedIn);
 });
 ```
 
@@ -237,13 +234,13 @@ const userPointInformation = await rewardSDK.getUserInfo();
 
 // Promise-based
 rewardSDK
-  .getUserInfo()
-  .then((userPointInformation) => {
-    const { unclaimedPoints, currentPoints } = userPointInformation;
-  })
-  .catch((err) => {
-    // failed to get user points info
-  });
+	.getUserInfo()
+	.then((userPointInformation) => {
+		const { unclaimedPoints, currentPoints } = userPointInformation;
+	})
+	.catch((err) => {
+		// failed to get user points info
+	});
 ```
 
 ## `Log Out`
@@ -262,7 +259,7 @@ Usage Example:
 rewardSDK.logout();
 
 // with callback
-const successCallback = () => console.log('Log out success!');
+const successCallback = () => console.log("Log out success!");
 rewardSDK.logout({ successCallback });
 ```
 
@@ -284,12 +281,12 @@ const userInformation = await rewardSDK.startSession();
 
 // Promise-based
 rewardSDK.startSession().then((userPointInformation) => {
-  // do something
+	// do something
 });
 
 // with callback
 const successCallback = (userInformation: UserPointInformation) =>
-  console.log('Start Session success!');
+	console.log("Start Session success!");
 rewardSDK.startSession({ successCallback });
 ```
 
@@ -315,16 +312,16 @@ const missionList = await rewardSDK.getMissions();
 
 // Promise-based
 rewardSDK
-  .getMissions()
-  .then((missionList) => {
-    console.log(missionList);
-  })
-  .catch((err) => {
-    // failed to get mission list
-  });
+	.getMissions()
+	.then((missionList) => {
+		console.log(missionList);
+	})
+	.catch((err) => {
+		// failed to get mission list
+	});
 
 // with callback
-const successCallback = () => console.log('Get Mission List success!');
+const successCallback = () => console.log("Get Mission List success!");
 rewardSDK.getMissions({ successCallback });
 ```
 
@@ -344,21 +341,21 @@ Usage Example:
 
 ```javascript
 // async/await supported
-await rewardSDK.logAction({ actionCode: 'ABCDEFGH123' });
+await rewardSDK.logAction({ actionCode: "ABCDEFGH123" });
 
 // Promise-based
 rewardSDK
-  .logAction({ actionCode: 'ABCDEFGH123' })
-  .then((achieveMissionResponse) => {
-    console.log(achieveMissionResponse);
-  })
-  .catch((err) => {
-    // failed to get achieve mission
-  });
+	.logAction({ actionCode: "ABCDEFGH123" })
+	.then((achieveMissionResponse) => {
+		console.log(achieveMissionResponse);
+	})
+	.catch((err) => {
+		// failed to get achieve mission
+	});
 
 // with callback
-const successCallback = () => console.log('Log Action success!');
-rewardSDK.logAction({ actionCode: 'ABCDEFGH123' }, { successCallback });
+const successCallback = () => console.log("Log Action success!");
+rewardSDK.logAction({ actionCode: "ABCDEFGH123" }, { successCallback });
 ```
 
 After achieving the mission, Notification Banner UI will be displayed. Mission SDK provides several types of Notification Banner:
@@ -385,18 +382,18 @@ You can create your own notification UI after achieving mission by calling your 
 
 ```javascript
 // async/await supported
-const achieveMissionResponse = await rewardSDK.logAction({ actionCode: 'ABCDEFGH123' });
+const achieveMissionResponse = await rewardSDK.logAction({ actionCode: "ABCDEFGH123" });
 displayNotification(achieveMissionResponse);
 
 // Promise-based
 rewardSDK
-  .logAction({ actionCode: 'ABCDEFGH123' })
-  .then((achieveMissionResponse) => {
-    displayNotification(achieveMissionResponse);
-  })
-  .catch((err) => {
-    // failed to achieve mission
-  });
+	.logAction({ actionCode: "ABCDEFGH123" })
+	.then((achieveMissionResponse) => {
+		displayNotification(achieveMissionResponse);
+	})
+	.catch((err) => {
+		// failed to achieve mission
+	});
 ```
 
 <br /><br />
@@ -421,16 +418,16 @@ const unclaimedItems = await rewardSDK.getUnclaimedItems();
 
 // Promise-based
 rewardSDK
-  .getUnclaimedItems()
-  .then((unclaimedItems) => {
-    console.log(unclaimedItems);
-  })
-  .catch((err) => {
-    // failed to get unclaimed items
-  });
+	.getUnclaimedItems()
+	.then((unclaimedItems) => {
+		console.log(unclaimedItems);
+	})
+	.catch((err) => {
+		// failed to get unclaimed items
+	});
 
 // with callback
-const successCallback = () => console.log('Get Unclaimed Items success!');
+const successCallback = () => console.log("Get Unclaimed Items success!");
 rewardSDK.getUnclaimedItems({ successCallback });
 ```
 
@@ -449,31 +446,31 @@ Usage Example:
 ```javascript
 // async/await supported
 const response = await rewardSDK.claimPointMission({
-  actionCode: 'ABCDEFG123',
-  achievedDateStr: '20231231',
+	actionCode: "ABCDEFG123",
+	achievedDateStr: "20231231",
 });
 
 // Promise-based
 rewardSDK
-  .claimPointMission({
-    actionCode: 'ABCDEFG123',
-    achievedDateStr: '20231231',
-  })
-  .then((claimPointResponse) => {
-    console.log(claimPointResponse);
-  })
-  .catch((err) => {
-    // failed to claim point
-  });
+	.claimPointMission({
+		actionCode: "ABCDEFG123",
+		achievedDateStr: "20231231",
+	})
+	.then((claimPointResponse) => {
+		console.log(claimPointResponse);
+	})
+	.catch((err) => {
+		// failed to claim point
+	});
 
 // with callback
-const successCallback = () => console.log('Claim Point success!');
+const successCallback = () => console.log("Claim Point success!");
 rewardSDK.claimPointMission(
-  {
-    actionCode: 'ABCDEFG123',
-    achievedDateStr: '20231231',
-  },
-  { successCallback }
+	{
+		actionCode: "ABCDEFG123",
+		achievedDateStr: "20231231",
+	},
+	{ successCallback }
 );
 ```
 
@@ -499,16 +496,16 @@ const pointsHistory = await rewardSDK.getPointHistory();
 
 // Promise-based
 rewardSDK
-  .getPointHistory()
-  .then((pointsHistory) => {
-    console.log(pointsHistory);
-  })
-  .catch((err) => {
-    // failed to get points history
-  });
+	.getPointHistory()
+	.then((pointsHistory) => {
+		console.log(pointsHistory);
+	})
+	.catch((err) => {
+		// failed to get points history
+	});
 
 // with callback
-const successCallback = () => console.log('Get Points History success!');
+const successCallback = () => console.log("Get Points History success!");
 rewardSDK.getPointHistory({ successCallback });
 ```
 
@@ -530,16 +527,16 @@ const currentPoints = await rewardSDK.getCurrentPoints();
 
 // Promise-based
 rewardSDK
-  .getCurrentPoints()
-  .then((currentPoints) => {
-    console.log(currentPoints);
-  })
-  .catch((err) => {
-    // failed to get current points
-  });
+	.getCurrentPoints()
+	.then((currentPoints) => {
+		console.log(currentPoints);
+	})
+	.catch((err) => {
+		// failed to get current points
+	});
 
 // with callback
-const successCallback = () => console.log('Get Current Points success!');
+const successCallback = () => console.log("Get Current Points success!");
 rewardSDK.getCurrentPoints({ successCallback });
 ```
 
@@ -605,7 +602,7 @@ rewardSDK.acceptConsent(options?: SDKCallbackParams): Void
 Usage Example:
 
 ```javascript
-const successCallback = () => console.log('Accept Consent success!');
+const successCallback = () => console.log("Accept Consent success!");
 rewardSDK.acceptConsent({ successCallback });
 ```
 
@@ -624,6 +621,6 @@ rewardSDK.displayConsentPopup(options?: SDKCallbackParams): Void
 Usage Example:
 
 ```javascript
-const successCallback = () => console.log('Open Consent Popup success!');
+const successCallback = () => console.log("Open Consent Popup success!");
 rewardSDK.displayConsentPopup({ successCallback });
 ```
