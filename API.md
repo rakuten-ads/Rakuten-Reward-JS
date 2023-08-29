@@ -55,6 +55,7 @@ Table of Contents
 | getUserName      | No    | No                                                  | String                                        | Returns Username's Full name                             |
 | setUserName      | No    | No                                                  | String                                        | Set Username's Full name                                 |
 | getUserInfo      | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [UserPointInformation](#userpointinformation) | Get User Information and current points                  |
+| getMemberInfo    | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [MemberInformation](#memberinformation)       | Get Rakuten's Points member information                  |
 | getIsUserConsent | No    | No                                                  | Boolean                                       | Get User's Consent status to Reward Mission terms of use |
 | acceptConsent    | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Void                                          | Accept User's Consent to Reward Mission terms of use     |
 
@@ -212,6 +213,13 @@ Table of Contents
 | missionadbanner_50Url  | string | ''            | URL for displaying Notification Banner 50  |
 | missionadbanner_250Url | string | ''            | URL for displaying Notification Banner 250 |
 | poikatsuUrl            | string | ''            | URL for displaying Poikatsu Ads            |
+
+### MemberInformation
+
+| Key          | Type   | Default Value | Description                          |
+| ------------ | ------ | ------------- | ------------------------------------ |
+| memberPoints | number | 0             | Current Rakuten's Points             |
+| memberRank   | number | 0             | Current Rakuten's Points Member Rank |
 
 ### NotificationType
 
