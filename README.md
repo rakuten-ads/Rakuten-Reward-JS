@@ -149,10 +149,12 @@ rewardSDK.displayLoginButton(elementId); // calling this function will fill the 
 
 In order to use your existing API-C Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
 
-1. Visit API-C Scope page
+1. Visit API-C Scope page: https://gateway-dashboard.intra.rakuten-it.com/#!/scopes
 2. Create client or use your existing client.
 3. Search for our scope and apply. Scope Name: `mission-sdk`, Organization: `Reward SDK`.
 4. Mission SDK Team will approve it.
+
+Reference: https://confluence.rakuten-it.com/confluence/display/ACUS/RToken#RToken-OnboardingflowforClients(ConsumeAPIwithRTokenAuthentication)
 
 If you already have Refresh Token and Access Token from Rakuten OMNI and want to keep the login state between your website and Mission SDK, you can pass the Access Token and Refresh Token when initializing the SDK.
 
@@ -358,21 +360,21 @@ const successCallback = () => console.log("Log Action success!");
 rewardSDK.logAction({ actionCode: "ABCDEFGH123" }, { successCallback });
 ```
 
-After achieving the mission, Notification Banner UI will be displayed. Mission SDK provides several types of Notification Banner:
+After achieving the mission, Notification Banner UI will be displayed. Mission SDK provides several types of [Notification Banner](./API.md#notificationtype):
 
-1. Modal (No Ads)
+1. MODAL (No Ads)
 
 <img src="assets/mission-modal.png" alt="drawing" width="400"/>
 
-2. Notification Banner (No Ads)
+2. BANNER (No Ads)
 
 <img src="assets/mission-banner.png" alt="drawing" width="400"/>
 
-3. Notification Banner 50 (With 50px heigth Ads)
+3. BANNER_50 (With 50px heigth Ads)
 
 <img src="assets/mission-banner-50.png" alt="drawing" width="400"/>
 
-4. Notification Banner 250 (With 250px heigth Ads)
+4. BANNER_250 (With 250px heigth Ads)
 
 <img src="assets/mission-banner-250.png" alt="drawing" width="400"/>
 

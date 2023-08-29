@@ -2,6 +2,7 @@
 
 Table of Contents
 
+- [Initialization](#initialization)
 - [Authentication](#authentication)
 - [User](#user)
 - [User Consent](#user-consent)
@@ -13,22 +14,29 @@ Table of Contents
 - [Class Object](#class-object)
 - [Error Code](#error-codes)
 
+## `Initialization`
+
+| Function | Async | Parameters                      | Response | Description            |
+| -------- | ----- | ------------------------------- | -------- | ---------------------- |
+| init     | No    | [SDKInitParams](#sdkinitparams) | Void     | Initialize Mission SDK |
+
 ## `Authentication`
 
 ### `Authentication Functions`
 
-| Function           | Async | Parameters                                          | Response                                      | Description                                                          |
-| ------------------ | ----- | --------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------- |
-| getLoginUrl        | No    | No                                                  | String                                        | Returns Rakuten Login URL                                            |
-| openLoginUrl       | No    | No                                                  | Void                                          | Open Rakuten Login URL in the same browser's tab                     |
-| hasUserSignedIn    | Yes   | No                                                  | Boolean                                       | Returns User Login Status                                            |
-| logout             | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Boolean                                       | Returns User Login Status                                            |
-| startSession       | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [UserPointInformation](#userpointinformation) | Start the user's session, generate Access Token using Refresh Token. |
-| refreshAccessToken | Yes   | No                                                  | Void                                          | Refresh current Access Token using existing Refresh Token            |
-| setFeatureEnabled  | No    | boolean                                             | Void                                          | Enable/disable Mission JS SDK APIs                                   |
-| setUIEnabled       | No    | boolean                                             | Void                                          | Enable/disable UI Notification                                       |
-| setAccessToken     | No    | string                                              | Void                                          | Manually set Access Token                                            |
-| setRefreshToken    | No    | string                                              | Void                                          | Manually set Refresh Token                                           |
+| Function           | Async | Parameters                                          | Response                                      | Description                                                                    |
+| ------------------ | ----- | --------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
+| getLoginUrl        | No    | No                                                  | String                                        | Returns Rakuten Login URL                                                      |
+| openLoginUrl       | No    | No                                                  | Void                                          | Open Rakuten Login URL in the same browser's tab                               |
+| hasUserSignedIn    | Yes   | No                                                  | Boolean                                       | Returns User Login Status                                                      |
+| logout             | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Boolean                                       | Returns User Login Status                                                      |
+| startSession       | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [UserPointInformation](#userpointinformation) | Start the user's session, generate Access Token using Refresh Token.           |
+| refreshAccessToken | Yes   | No                                                  | Void                                          | Refresh current Access Token using existing Refresh Token                      |
+| setFeatureEnabled  | No    | boolean                                             | Void                                          | Enable/disable Mission JS SDK APIs                                             |
+| setUIEnabled       | No    | boolean                                             | Void                                          | Enable/disable UI Notification                                                 |
+| setAccessToken     | No    | string                                              | Void                                          | Manually set Access Token                                                      |
+| setRefreshToken    | No    | string                                              | Void                                          | Manually set Refresh Token                                                     |
+| renewRefreshToken  | Yes   | string                                              | Void                                          | Renew Refresh Token. Not applicable for publishers who manage their own tokens |
 
 ### `Authentication UI`
 
@@ -310,3 +318,4 @@ Table of Contents
 | `error_refresh_token_invalid`    | Refreh token invalid, please try again                                | The refresh token you provided is invalid and the access token cannot be renewed. You need to pass the valid refresh token by calling [`setRefreshToken`](#authentication).                                                                  |
 | `error_action_still_invalid`     | The action is still invalid, please wait for a while                  | The mission you're trying to log action is still invalid, please wait for a while. This error is usually for fraud prevention, to prevent users sending log action multiple times in a short time.                                           |
 | `error_user_not_consent`         | Unavailable For Legal Reasons                                         | User has not given their consent to Reward Mission SDK terms of usage. You need to accept the consent first by calling the [`displayConsentPopup`](#user-consent-ui) function to display User Consent Popup.                                 |
+| `error_not_initialized`          | You have not initialized the SDK                                      | You haven't initialized Mission SDK. Please call SDK's [`init`](./README.md#initialize-mission-sdk) to initialize SDK and pass the required params                                                                                           |
