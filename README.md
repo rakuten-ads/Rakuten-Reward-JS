@@ -12,6 +12,7 @@ Table of Contents
 - [Initialize Mission SDK](#initialize-mission-sdk)
 - [Get User Information](#get-user-information)
 - [API Reference](./API.md)
+- [UI](./UI.md)
 - [FAQ](./FAQ.md)
 
 <br /><br />
