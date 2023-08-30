@@ -11,6 +11,7 @@ Table of Contents
 - [How can I implement the custom notification UI?](#how-can-i-implement-the-custom-notification-ui)
 - [Is it possible to detect SDK Portal closed event?](#is-it-possible-to-detect-sdk-portal-closed-event)
 - [What will happen if Access Token is expired?](#what-will-happen-if-access-token-is-expired)
+- [User A already accept to Mission SDK's User Consent but then logged out, then User B login in the same browser. What is the Consent Status for User B?](#user-a-already-accept-to-mission-sdks-user-consent-but-then-logged-out-then-user-b-login-in-the-same-browser-what-is-the-consent-status-for-user-b)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -207,5 +208,13 @@ rewardSDK.displayRewardIcon(
 <details>
 <summary>Answer</summary>
 Mission JS SDK will automatically requests a new valid Access Token using the existing Refresh Token. So, please make sure that you always provide a valid refresh token to make this feature works.
+
+</details>
+
+## User A already accept to Mission SDK's User Consent but then logged out, then User B login in the same browser. What is the Consent Status for User B?
+
+<details>
+<summary>Answer</summary>
+User Consent feature is tied with the user's account, not the browser side. So, User B has a different consent status with User A.
 
 </details>
