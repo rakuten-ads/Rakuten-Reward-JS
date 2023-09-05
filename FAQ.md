@@ -12,6 +12,7 @@ Table of Contents
 - [Is it possible to detect SDK Portal closed event?](#is-it-possible-to-detect-sdk-portal-closed-event)
 - [What will happen if Access Token is expired?](#what-will-happen-if-access-token-is-expired)
 - [User A already accept to Mission SDK's User Consent but then logged out, then User B login in the same browser. What is the Consent Status for User B?](#user-a-already-accept-to-mission-sdks-user-consent-but-then-logged-out-then-user-b-login-in-the-same-browser-what-is-the-consent-status-for-user-b)
+- [How to send tracking events?](#how-to-send-tracking-events)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -216,5 +217,73 @@ Mission JS SDK will automatically requests a new valid Access Token using the ex
 <details>
 <summary>Answer</summary>
 User Consent feature is tied with the user's account, not the browser side. So, User B has a different consent status with User A.
+
+</details>
+
+## How to send tracking events?
+
+<details>
+<summary>Answer</summary>
+Currently, Mission JS SDK doesn't provide built-in tracking, but we're working on building our own events tracking. If you want to send events tracking when using our SDK APIs, here are some ways to send them.
+
+Let'say you want to send tracking events using Rakuten Analytics (RAT) to send analytics data when users achieving a mission.
+
+1. Before calling our `logAction` API
+
+```javascript
+function logAction() {
+	// sending log action event
+	window.RAT.addCustomEvent({
+		accountId: 123,
+		serviceId: 123,
+		pData: {
+			key: "value",
+		},
+	});
+	rewardSDK.logAction({ actionCode: "ABCDEFGH123" });
+}
+```
+
+2. Using `successCallback` object to pass your tracking functions after users succesfully achieved the mission.
+
+```javascript
+function logAction() {
+	rewardSDK.logAction(
+		{ actionCode: "ABCDEFGH123" },
+		{
+			successCallback: () => {
+				// send success log action event
+				window.RAT.addCustomEvent({
+					accountId: 123,
+					serviceId: 123,
+					pData: {
+						key: "value",
+					},
+				});
+			},
+		}
+	);
+}
+```
+
+3. Using `try & catch` approach to send tracking events if user failed to achieve the mission or there's an issue during the mission achievement.
+
+```javascript
+function logAction() {
+	try {
+		rewardSDK.logAction({ actionCode: "ABCDEFGH123" });
+	} catch (error) {
+		// send failed log action event
+		window.RAT.addCustomEvent({
+			accountId: 123,
+			serviceId: 123,
+			pData: {
+				key: "value",
+				error,
+			},
+		});
+	}
+}
+```
 
 </details>
