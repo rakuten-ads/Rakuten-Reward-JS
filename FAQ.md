@@ -13,6 +13,7 @@ Table of Contents
 - [What will happen if Access Token is expired?](#what-will-happen-if-access-token-is-expired)
 - [User A already accept to Mission SDK's User Consent but then logged out, then User B login in the same browser. What is the Consent Status for User B?](#user-a-already-accept-to-mission-sdks-user-consent-but-then-logged-out-then-user-b-login-in-the-same-browser-what-is-the-consent-status-for-user-b)
 - [How to send tracking events?](#how-to-send-tracking-events)
+- [I don't want to display SDK Portal UI, because I want to create and use our custom UI. How to disable SDK Portal?](#i-dont-want-to-display-sdk-portal-ui-because-i-want-to-create-and-use-our-custom-ui-how-to-disable-sdk-portal)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -285,5 +286,24 @@ function logAction() {
 	}
 }
 ```
+
+</details>
+
+## I don't want to display SDK Portal UI, because I want to create and use our custom UI. How to disable SDK Portal?
+
+<details>
+<summary>Answer</summary>
+You can disable our SDK Portal UI by passing `sdkPortalEnabled` key during the Mission JS SDK's initialization.
+
+```javascript
+rewardSDK.init({
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
+	adId: "ABCD1234567H",
+	sdkPortalEnabled: false,
+});
+```
+
+By passing `sdkPortalDisabled = true`, users won't be able to see SDK Portal, and won't see SDK Portal Button when claiming point.
 
 </details>

@@ -24,19 +24,20 @@ Table of Contents
 
 ### `Authentication Functions`
 
-| Function           | Async | Parameters                                          | Response                                      | Description                                                                    |
-| ------------------ | ----- | --------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
-| getLoginUrl        | No    | No                                                  | String                                        | Returns Rakuten Login URL                                                      |
-| openLoginUrl       | No    | No                                                  | Void                                          | Open Rakuten Login URL in the same browser's tab                               |
-| hasUserSignedIn    | Yes   | No                                                  | Boolean                                       | Returns User Login Status                                                      |
-| logout             | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Boolean                                       | Returns User Login Status                                                      |
-| startSession       | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [UserPointInformation](#userpointinformation) | Start the user's session, generate Access Token using Refresh Token.           |
-| refreshAccessToken | Yes   | No                                                  | Void                                          | Refresh current Access Token using existing Refresh Token                      |
-| setFeatureEnabled  | No    | boolean                                             | Void                                          | Enable/disable Mission JS SDK APIs                                             |
-| setUIEnabled       | No    | boolean                                             | Void                                          | Enable/disable UI Notification                                                 |
-| setAccessToken     | No    | string                                              | Void                                          | Manually set Access Token                                                      |
-| setRefreshToken    | No    | string                                              | Void                                          | Manually set Refresh Token                                                     |
-| renewRefreshToken  | Yes   | string                                              | Void                                          | Renew Refresh Token. Not applicable for publishers who manage their own tokens |
+| Function            | Async | Parameters                                          | Response                                      | Description                                                                    |
+| ------------------- | ----- | --------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
+| getLoginUrl         | No    | No                                                  | String                                        | Returns Rakuten Login URL                                                      |
+| openLoginUrl        | No    | No                                                  | Void                                          | Open Rakuten Login URL in the same browser's tab                               |
+| hasUserSignedIn     | Yes   | No                                                  | Boolean                                       | Returns User Login Status                                                      |
+| logout              | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Boolean                                       | Returns User Login Status                                                      |
+| startSession        | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | [UserPointInformation](#userpointinformation) | Start the user's session, generate Access Token using Refresh Token.           |
+| refreshAccessToken  | Yes   | No                                                  | Void                                          | Refresh current Access Token using existing Refresh Token                      |
+| setFeatureEnabled   | No    | boolean                                             | Void                                          | Enable/disable Mission JS SDK APIs                                             |
+| setSDKPortalEnabled | No    | boolean                                             | Void                                          | Enable/disable SDK Portal                                                      |
+| setUIEnabled        | No    | boolean                                             | Void                                          | Enable/disable UI Notification                                                 |
+| setAccessToken      | No    | string                                              | Void                                          | Manually set Access Token                                                      |
+| setRefreshToken     | No    | string                                              | Void                                          | Manually set Refresh Token                                                     |
+| renewRefreshToken   | Yes   | string                                              | Void                                          | Renew Refresh Token. Not applicable for publishers who manage their own tokens |
 
 ### `Authentication UI`
 
@@ -161,18 +162,19 @@ Table of Contents
 
 ### SDKInitParams
 
-| Key             | Type       | Mandatory | Default Value | Description                                                                                                                                   |
-| --------------- | ---------- | --------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| appKey          | string     | Mandatory |               | Publisher's application Key                                                                                                                   |
-| language        | 'ja', 'en' | Optional  | 'ja'          | Language used in Mission Reward SDK                                                                                                           |
-| uiEnabled       | boolean    | Optional  | true          | Configuration to display our Achieve Mission Notification Banner                                                                              |
-| featureEnabled  | boolean    | Optional  | true          | Configuration to display our Mission SDK features. Disabling this Key will make you can't use our Mission SDK features.                       |
-| adId            | string     | Optional  | ''            | Device Ad Id, used in our Ads features as user identifier                                                                                     |
-| accessToken     | string     | Optional  | ''            | Access Token generated by API-C, used to access Mission SDK's API                                                                             |
-| refreshToken    | string     | Optional  | ''            | Refresh Token generated by API-C, used to acquire new or refresh the Access Token when it's expired. Mandatory if you passed `accessToken`.   |
-| userName        | string     | Optional  | ''            | User's name, used to display user's name in SDK Portal. Mandatory if you passed `accessToken`                                                 |
-| successCallback | void       | Optional  | undefined     | Function to be called after Mission SDK finishes initialization. Can be used to pass callback function such as page visit mission achievement |
-|                 |            |           |               |                                                                                                                                               |
+| Key              | Type       | Mandatory | Default Value | Description                                                                                                                                   |
+| ---------------- | ---------- | --------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| appKey           | string     | Mandatory |               | Publisher's application Key                                                                                                                   |
+| language         | 'ja', 'en' | Optional  | 'ja'          | Language used in Mission Reward SDK                                                                                                           |
+| uiEnabled        | boolean    | Optional  | true          | Configuration to display our Achieve Mission Notification Banner                                                                              |
+| featureEnabled   | boolean    | Optional  | true          | Configuration to display our Mission SDK features. Disabling this Key will make you can't use our Mission SDK features.                       |
+| sdkPortalEnabled | boolean    | Optional  | true          | Configuration to display our Mission SDK Portal UI. Disabling this Key will make you can't use our Mission SDK Portal UI.                     |
+| adId             | string     | Optional  | ''            | Device Ad Id, used in our Ads features as user identifier                                                                                     |
+| accessToken      | string     | Optional  | ''            | Access Token generated by API-C, used to access Mission SDK's API                                                                             |
+| refreshToken     | string     | Optional  | ''            | Refresh Token generated by API-C, used to acquire new or refresh the Access Token when it's expired. Mandatory if you passed `accessToken`.   |
+| userName         | string     | Optional  | ''            | User's name, used to display user's name in SDK Portal. Mandatory if you passed `accessToken`                                                 |
+| successCallback  | void       | Optional  | undefined     | Function to be called after Mission SDK finishes initialization. Can be used to pass callback function such as page visit mission achievement |
+|                  |            |           |               |                                                                                                                                               |
 
 ### SDKCallbackParams
 

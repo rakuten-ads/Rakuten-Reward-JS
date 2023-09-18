@@ -12,7 +12,6 @@ Table of Contents
 - [Initialize Mission SDK](#initialize-mission-sdk)
 - [Get User Information](#get-user-information)
 - [API Reference](./API.md)
-- [UI](./UI.md)
 - [FAQ](./FAQ.md)
 
 <br /><br />
@@ -572,6 +571,7 @@ Mission JS SDK provides optional user's consent feature for Reward SDK's terms o
 If user consent feature is enabled, users are required to give their consent when doing these:
 
 - Open Reward SDK Portal
+- Log Action
 - Claim Point
 
 User Consent popup will be displayed before they can complete above tasks if the users are still not consent yet.

@@ -22,7 +22,7 @@ Display Rakuten Login Button that will redirect users to the Rakuten Login Page,
 How to use:
 
 ```javascript
-const elementId = 'sdk-login-button-element-id';
+const elementId = "sdk-login-button-element-id";
 rewardSDK.displayLoginButton(elementId);
 ```
 
@@ -41,7 +41,7 @@ If user is logged in, display User's Point Information. If user is not logged in
 How to use:
 
 ```javascript
-const elementId = 'sdk-user-info-element-id';
+const elementId = "sdk-user-info-element-id";
 rewardSDK.displayLoginElement(elementId);
 ```
 
