@@ -184,9 +184,10 @@ Table of Contents
 
 ### MissionActionData
 
-| Key        | Type   | Mandatory | Default Value | Description         |
-| ---------- | ------ | --------- | ------------- | ------------------- |
-| actionCode | string | Mandatory | ''            | Mission Action Code |
+| Key                      | Type    | Mandatory | Default Value | Description                                                 |
+| ------------------------ | ------- | --------- | ------------- | ----------------------------------------------------------- |
+| actionCode               | string  | Mandatory | ''            | Mission Action Code                                         |
+| forceDisplayConsentPopup | boolean | Optional  | false         | Force display User Consent Popup if user is not consent yet |
 
 ### MissionCompleteResponse
 

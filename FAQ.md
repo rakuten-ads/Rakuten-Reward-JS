@@ -14,6 +14,7 @@ Table of Contents
 - [User A already accept to Mission SDK's User Consent but then logged out, then User B login in the same browser. What is the Consent Status for User B?](#user-a-already-accept-to-mission-sdks-user-consent-but-then-logged-out-then-user-b-login-in-the-same-browser-what-is-the-consent-status-for-user-b)
 - [How to send tracking events?](#how-to-send-tracking-events)
 - [I don't want to display SDK Portal UI, because I want to create and use our custom UI. How to disable SDK Portal?](#i-dont-want-to-display-sdk-portal-ui-because-i-want-to-create-and-use-our-custom-ui-how-to-disable-sdk-portal)
+- [I want every users to accept user consent before achieving any missions. How can I do that?](#i-want-every-users-to-accept-user-consent-before-achieving-any-missions-how-can-i-do-that)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -305,5 +306,20 @@ rewardSDK.init({
 ```
 
 By passing `sdkPortalDisabled = true`, users won't be able to see SDK Portal, and won't see SDK Portal Button when claiming point.
+
+</details>
+
+## I want every users to accept user consent before achieving any missions. How can I do that?
+
+<details>
+<summary>Answer</summary>
+You can pass the [`forceDisplayConsentPopup`](./API.md#missionactiondata) when calling our `logAction` API. So, if any users want to do the log action, they need to give their consent first.
+
+```javascript
+rewardSDK.logAction({
+	actionCode: "12345ABCDE",
+	forceDisplayConsentPopup: true,
+});
+```
 
 </details>
