@@ -93,6 +93,23 @@ rewardSDK.init({
 });
 ```
 
+Or, you can use async/await and put the codes sequentially.
+
+```javascript
+(async () => {
+	try {
+		await rewardSDK.init({
+			appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+			language: "ja",
+		});
+	} catch (err) {
+		// to catch init/authentication error
+	}
+
+	rewardSDK.logAction({ actionCode: "ABCD123456" }); // log this action after SDK initialization finished.
+})();
+```
+
 </details>
 
 ## How do I claim mission after a mission is achieved?
@@ -309,11 +326,11 @@ By passing `sdkPortalDisabled = true`, users won't be able to see SDK Portal, an
 
 </details>
 
-## I want every users to accept user consent before achieving any missions. How can I do that?
+## I want users to accept user consent before achieving any missions. How can I do that?
 
 <details>
 <summary>Answer</summary>
-You can pass the [`forceDisplayConsentPopup`](./API.md#missionactiondata) when calling our `logAction` API. So, if any users want to do the log action, they need to give their consent first.
+Sure, you can follow this:
 
 ```javascript
 rewardSDK.logAction({
@@ -321,5 +338,7 @@ rewardSDK.logAction({
 	forceDisplayConsentPopup: true,
 });
 ```
+
+You can pass the [`forceDisplayConsentPopup`](./API.md#missionactiondata) when calling our `logAction` API. So, if any users want to do the log action, they need to give their consent first.
 
 </details>

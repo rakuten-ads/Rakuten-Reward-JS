@@ -96,9 +96,42 @@ rewardSDK.init({
 
 | function | async | parameters                              | response type | description            |
 | -------- | ----- | --------------------------------------- | ------------- | ---------------------- |
-| init     | no    | [SDKInitParams](./API.md#sdkinitparams) | void          | Initialize Mission SDK |
+| init     | Yes   | [SDKInitParams](./API.md#sdkinitparams) | void          | Initialize Mission SDK |
 
 The `init` function can receives multiple parameters, depends on your needs. Please visit this [SDKInitParams](./API.md#sdkinitparams) API Reference.
+
+If you want to do something after the initialization, there are 2 ways:
+
+1. Pass the codes inside `successCallback`
+
+```javascript
+rewardSDK.init({
+	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+	language: "ja",
+	successCallback: async () => {
+		const isSignedIn = await rewardSDK.hasUserSignedIn();
+		console.log("isSignedIn", isSignedIn);
+	},
+});
+```
+
+2. Use async/await and put the codes sequentially
+
+```javascript
+(async () => {
+	try {
+		await rewardSDK.init({
+			appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
+			language: "ja",
+		});
+	} catch (err) {
+		// to catch init/authentication error
+	}
+
+	const isSignedIn = await rewardSDK.hasUserSignedIn();
+	console.log("isSignedIn", isSignedIn);
+})();
+```
 
 <br /><br />
 
