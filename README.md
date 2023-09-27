@@ -156,16 +156,15 @@ In order to use your existing API-C Tokens to connect with Mission JS SDK, you h
 
 Reference: https://confluence.rakuten-it.com/confluence/display/ACUS/RToken#RToken-OnboardingflowforClients(ConsumeAPIwithRTokenAuthentication)
 
-If you already have Refresh Token and Access Token from Rakuten OMNI and want to keep the login state between your website and Mission SDK, you can pass the Access Token and Refresh Token when initializing the SDK.
+If you already have an Access Token from Rakuten OMNI and want to keep the login state between your website and Mission SDK, you can pass the Access Token when initializing the SDK.
 
-To use this feature and to make sure all the functionalities work (including refresh access token when expired), you have to pass several data: `accessToken`, `refreshToken`, and `userName` during the Mission SDK initialization. Please see the init function's parameters here [SDKInitParams](./API.md#sdkinitparams).
+To use this feature and to make sure all the functionalities work (including refresh access token when expired), you have to pass the `accessToken` data during the Mission SDK initialization. Please see the init function's parameters here [SDKInitParams](./API.md#sdkinitparams).
 
 ```javascript
 rewardSDK.init({
 	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
 	language: "ja",
 	accessToken: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
-	refreshToken: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
 	userName: "John Doe",
 });
 ```
@@ -173,8 +172,7 @@ rewardSDK.init({
 Notes:
 
 1. Make sure that your `accessToken` has access to RWDSDK API in API-C.
-2. Passing `refreshToken` is required, and will be used to automatically refresh the `accessToken` if the previous token is expired.
-3. Passing `userName` is required, and will be used to display the User's Name in Mission SDK Portal.
+2. Passing `userName` is optional, and will be used to display the User's Name in Mission SDK Portal.
 
 <br /><br />
 

@@ -49,9 +49,9 @@ Reference: [User UI](./API.md#user-ui)
 
 In this UI, some informations are displayed:
 
-1. User's Name
+1. User's Name (if any)
 2. User's Current Rakuten Point
-3. User's Monthly Earned Point from Mission SDK
+3. User's Monthly Reward Point from Mission SDK
 
 ## User Consent
 
