@@ -373,7 +373,7 @@ function sendLogAction() {
   } catch(err) {
 
     // check if the error is because of invalid access token
-    if (err.code === 'invalid_access_token') {
+    if (err.code === 'error_access_token_invalid') {
       // let's say you have a generateNewAccessToken function to get the new access token
       const newAccessToken = await generateNewAccessToken();
 
