@@ -180,23 +180,16 @@ rewardSDK.displayLoginButton(elementId); // calling this function will fill the 
 
 ## `Pass the Login State to SDK`
 
-In order to use your existing API-C Tokens to connect with Mission JS SDK, you have to apply your API-C client to our Scope by following this step by steps:
-
-1. Visit API-C Scope page: https://gateway-dashboard.intra.rakuten-it.com/#!/scopes
-2. Create client or use your existing client.
-3. Search for our scope and apply. Scope Name: `mission-sdk`, Organization: `Reward SDK`.
-4. Mission SDK Team will approve it.
-
-Reference: https://confluence.rakuten-it.com/confluence/display/ACUS/RToken#RToken-OnboardingflowforClients(ConsumeAPIwithRTokenAuthentication)
-
+In order to use your existing API-C Tokens to connect with Mission JS SDK, you have to apply your API-C client to our scope.
 If you already have an Access Token from Rakuten OMNI and want to keep the login state between your website and Mission SDK, you can pass the Access Token when initializing the SDK.
 
-To use this feature and to make sure all the functionalities work (including refresh access token when expired), you have to pass the `accessToken` data during the Mission SDK initialization. Please see the init function's parameters here [SDKInitParams](./API.md#sdkinitparams).
+To use this feature and to make sure all the functionalities work (including refresh access token when expired), you have to pass the `accessToken` data during the Mission SDK initialization, and pass the tokenType `omni`. Please see the init function's parameters here [SDKInitParams](./API.md#sdkinitparams).
 
 ```javascript
 rewardSDK.init({
 	appKey: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
 	language: "ja",
+	tokenType: "omni",
 	accessToken: "QWERTYUIOPASDFGHJKLZXCVBNM123456789",
 	userName: "John Doe",
 });
@@ -205,7 +198,8 @@ rewardSDK.init({
 Notes:
 
 1. Make sure that your `accessToken` has access to RWDSDK API in API-C.
-2. Passing `userName` is optional, and will be used to display the User's Name in Mission SDK Portal.
+2. If your token type is from `omni`, then you need to pass it.
+3. Passing `userName` is optional, and will be used to display the User's Name in Mission SDK Portal.
 
 <br /><br />
 

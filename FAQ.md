@@ -15,6 +15,7 @@ Table of Contents
 - [How to send tracking events?](#how-to-send-tracking-events)
 - [I don't want to display SDK Portal UI, because I want to create and use our custom UI. How to disable SDK Portal?](#i-dont-want-to-display-sdk-portal-ui-because-i-want-to-create-and-use-our-custom-ui-how-to-disable-sdk-portal)
 - [I want every users to accept user consent before achieving any missions. How can I do that?](#i-want-every-users-to-accept-user-consent-before-achieving-any-missions-how-can-i-do-that)
+- [I want to keep the login state from my website to Mission JS SDK. How to handle if the token expired?](#i-want-to-keep-the-login-state-from-my-website-to-mission-js-sdk-how-to-handle-if-the-token-expired)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -340,5 +341,66 @@ rewardSDK.logAction({
 ```
 
 You can pass the [`forceDisplayConsentPopup`](./API.md#missionactiondata) when calling our `logAction` API. So, if any users want to do the log action, they need to give their consent first.
+
+</details>
+
+## I want to keep the login state from my website to Mission JS SDK. How to handle if the token expired?
+
+<details>
+<summary>Answer</summary>
+
+```javascript
+rewardSDK.init({
+	appKey: "12345ABCDE",
+	accessToken: "12345ABCDEFGHJKLMNOPQ",
+});
+```
+
+If you want to keep the login state from your website into Mission JS SDK, you have to pass the `accessToken` value during the SDK initialization. But, the access token has a short validity time, maybe only 60 minutes.
+
+If the access token expired (for example, because the user doesn't close the tab after a few hours, and then get back to that tab), then you need to manually handle and provide the new valid access token to the Mission JS SDK.
+
+There are 2 approaches on how to handle this.
+
+1. By wrapping the function inside `try & catch` and manually pass the new access token.
+
+```javascript
+function sendLogAction() {
+  try {
+    // call log action
+    const response = await rewardSDK.logAction({ ... })
+
+  } catch(err) {
+
+    // check if the error is because of invalid access token
+    if (err.code === 'invalid_access_token') {
+      // let's say you have a generateNewAccessToken function to get the new access token
+      const newAccessToken = await generateNewAccessToken();
+
+      // pass the new access token to SDK
+      rewardSDK.setAccessToken(newAccessToken);
+
+      // retry the sendLogAction
+      sendLogAction();
+    }
+  }
+}
+```
+
+2. By passing the `omniRefreshAccessTokenFunction` function during the SDK initialization, so Mission JS SDK will automatically handle the renew access token.
+
+```javascript
+async function omniRefreshAccessTokenFunction() {
+	// let's say you have a generateNewAccessToken function to get the new access token
+	const newAccessToken = await generateNewAccessToken();
+	return newAccessToken;
+}
+
+rewardSDK.init({
+	appKey: "12345ABCDE",
+	accessToken: "12345ABCDEFGHJKLMNOPQ",
+	omniRefreshAccessTokenFunction,
+});
+```
 
 </details>
