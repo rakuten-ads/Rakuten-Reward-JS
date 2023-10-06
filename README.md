@@ -1,7 +1,6 @@
 # `Rakuten Mission SDK - JS SDK`
 
 [![Language](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Language](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/docs/)
 
 Reward Mission JS SDK is a javascript SDK for integrating with Reward Mission functionalities to let users get Rakuten Points as the reward of achieving missions.
 
@@ -60,12 +59,16 @@ Mission SDK supports both `Desktop` & `Mobile` website by reading the device's w
 
 To install via script, import our JS SDK file by pasting the following `<script>` tag inside the `<header>` tag.
 
+Source file: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/{{VERSION}}/missionsdk.js`<br />
+
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.0.0/missionsdk.js`
+
 ```html
 <header>
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://ad-proxy.reward.rakuten.co.jp/sdk-ad/resources/sdk/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.0.0/missionsdk.js"></script>
 </header>
 ```
 
