@@ -78,9 +78,9 @@ Table of Contents
 
 ### `User Consent UI`
 
-| Function            | Async                                               | Parameters          | Response | Description                                    |
-| ------------------- | --------------------------------------------------- | ------------------- | -------- | ---------------------------------------------- |
-| displayConsentPopup | (options?: [SDKCallbackParams](#sdkcallbackparams)) | (elementId: string) | Void     | Display Mission SDK terms of use Consent Popup |
+| Function            | Async | Parameters                                          | Response | Description                                    |
+| ------------------- | ----- | --------------------------------------------------- | -------- | ---------------------------------------------- |
+| displayConsentPopup | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Void     | Display Mission SDK terms of use Consent Popup |
 
 <br /><br />
 
@@ -88,10 +88,11 @@ Table of Contents
 
 ### `Mission Functions`
 
-| Function    | Async | Parameters                                                                                                  | Response                                              | Description                     |
-| ----------- | ----- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
-| getMissions | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
-| logAction   | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
+| Function               | Async | Parameters                                                                                                                 | Response                                              | Description                     |
+| ---------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
+| getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                                        | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
+| logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams))                | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
+| logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number, options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
 
 ### `Mission UI`
 
@@ -186,10 +187,11 @@ Table of Contents
 
 ### MissionActionData
 
-| Key                      | Type    | Mandatory | Default Value | Description                                                 |
-| ------------------------ | ------- | --------- | ------------- | ----------------------------------------------------------- |
-| actionCode               | string  | Mandatory | ''            | Mission Action Code                                         |
-| forceDisplayConsentPopup | boolean | Optional  | false         | Force display User Consent Popup if user is not consent yet |
+| Key                      | Type     | Mandatory | Default Value | Description                                                     |
+| ------------------------ | -------- | --------- | ------------- | --------------------------------------------------------------- |
+| actionCode               | string   | Mandatory | ''            | Mission Action Code                                             |
+| forceDisplayConsentPopup | boolean  | Optional  | false         | Force display User Consent Popup if user is not consent yet     |
+| onRejectConsentPopup     | Function | Optional  | undefined     | Function to be called if the user reject the user consent popup |
 
 ### MissionCompleteResponse
 
@@ -262,12 +264,19 @@ Table of Contents
 
 ### MissionLogActionResponse
 
-| Key      | Type                                        | Default Value | Description                                                               |
-| -------- | ------------------------------------------- | ------------- | ------------------------------------------------------------------------- |
-| mission  | [MissionItemComplete](#missionitemcomplete) | {}            | Mission details                                                           |
-| success  | Boolean                                     | false         | Mission log action status                                                 |
-| achieved | [MissionItemComplete](#missionitemcomplete) | {}            | Mission achievement status. Validation if user is able to claim the point |
-| member   | { unclaimed: number }                       | {}            | Returns User's total unclaimed points                                     |
+| Key      | Type                                        | Default Value | Description                                                                                                           |
+| -------- | ------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| mission  | [MissionItemComplete](#missionitemcomplete) | {}            | Mission details                                                                                                       |
+| success  | Boolean                                     | false         | Mission log action status. Value will be `false` if the log action is invalid, e.g. already passed the maximum counts |
+| achieved | [MissionItemComplete](#missionitemcomplete) | {}            | Mission achievement status. Validation if user is able to claim the point                                             |
+| member   | { unclaimed: number }                       | {}            | Returns User's total unclaimed points                                                                                 |
+
+### MissionLogActionMultipleResponse
+
+| Key    | Type                                                           | Default Value | Description                                                                                                                                |
+| ------ | -------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| status | `fulfilled`, `rejected`                                        | ''            | Status of each log action. If the log action is success, it will be `fulfilled`. Otherwise, or if there's any error, it till be `rejected` |
+| value  | [MissionLogActionResponse](#missionlogactionresponse) or Error | ''            | If the log action is success, the value will be the [MissionLogActionResponse](#missionlogactionresponse). Otherwise, error.               |
 
 ### UnclaimedItem
 
