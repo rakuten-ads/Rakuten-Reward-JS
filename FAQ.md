@@ -16,6 +16,7 @@ Table of Contents
 - [I don't want to display SDK Portal UI, because I want to create and use our custom UI. How to disable SDK Portal?](#i-dont-want-to-display-sdk-portal-ui-because-i-want-to-create-and-use-our-custom-ui-how-to-disable-sdk-portal)
 - [I want every users to accept user consent before achieving any missions. How can I do that?](#i-want-every-users-to-accept-user-consent-before-achieving-any-missions-how-can-i-do-that)
 - [I want to keep the login state from my website to Mission JS SDK. How to handle if the token expired?](#i-want-to-keep-the-login-state-from-my-website-to-mission-js-sdk-how-to-handle-if-the-token-expired)
+- [I want log 1 action multiple times, e.g. 5 times. How can I do that?](#i-want-log-1-action-multiple-times-eg-5-times-how-can-i-do-that)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -402,5 +403,33 @@ rewardSDK.init({
 	omniRefreshAccessTokenFunction,
 });
 ```
+
+</details>
+
+## I want log 1 action multiple times, e.g. 5 times. How can I do that?
+
+<details>
+<summary>Answer</summary>
+Sure, you can follow this:
+
+```javascript
+try {
+	const responses = await rewardSDK.logActionMultipleTimes(
+		{
+			actionCode: "12345ABCDE",
+			forceDisplayConsentPopup: true,
+		},
+		5
+	);
+
+	// responses will be:
+	// If all actions success: [{ status: 'fulfilled', value: MissionLogActionResponse }, { status: 'fulfilled', value: MissionLogActionResponse }]
+	// If there's any error in one action: [{ status: 'fulfilled', value: MissionLogActionResponse }, { status: 'rejected', value: Error }]
+} catch (err) {
+	console.log(err);
+}
+```
+
+You can call the [`logActionMultipleTimes`](./API.md#mission-functions), and pass it with your actionCode and how many counts you want to log. The responses will be a list of each log action, so please check your product's needs if you require all log actions to be successfull.
 
 </details>

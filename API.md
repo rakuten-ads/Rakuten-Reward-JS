@@ -88,11 +88,11 @@ Table of Contents
 
 ### `Mission Functions`
 
-| Function               | Async | Parameters                                                                                                                 | Response                                              | Description                     |
-| ---------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
-| getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                                        | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
-| logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams))                | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
-| logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number, options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
+| Function               | Async | Parameters                                                                                                  | Response                                              | Description                     |
+| ---------------------- | ----- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
+| getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
+| logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
+| logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number)                                     | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
 
 ### `Mission UI`
 
@@ -187,11 +187,10 @@ Table of Contents
 
 ### MissionActionData
 
-| Key                      | Type     | Mandatory | Default Value | Description                                                     |
-| ------------------------ | -------- | --------- | ------------- | --------------------------------------------------------------- |
-| actionCode               | string   | Mandatory | ''            | Mission Action Code                                             |
-| forceDisplayConsentPopup | boolean  | Optional  | false         | Force display User Consent Popup if user is not consent yet     |
-| onRejectConsentPopup     | Function | Optional  | undefined     | Function to be called if the user reject the user consent popup |
+| Key                      | Type    | Mandatory | Default Value | Description                                                 |
+| ------------------------ | ------- | --------- | ------------- | ----------------------------------------------------------- |
+| actionCode               | string  | Mandatory | ''            | Mission Action Code                                         |
+| forceDisplayConsentPopup | boolean | Optional  | false         | Force display User Consent Popup if user is not consent yet |
 
 ### MissionCompleteResponse
 
@@ -325,6 +324,15 @@ Table of Contents
 | width    | number                                               | 48            | Width of Reward Icon              |
 
 ## `Error Codes`
+
+### Error
+
+| Key               | type      | Default Value | Description              |
+| ----------------- | --------- | ------------- | ------------------------ |
+| error_code        | ErrorCode | undefined     | Code of the error        |
+| error_description | ErrorCode | undefined     | Description of the error |
+
+### ErrorCode
 
 | Key                                           | Message                                                               | Description                                                                                                                                                                                                                                  |
 | --------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
