@@ -99,12 +99,36 @@ In this UI, some informations will be displayed:
 6. Mission Progress
 7. Mission Point, ex. `2 points`
 8. Mission Conditions, ex. `Every day 100 times achievable`
+9. Join Mission Button*
+10. Terms and Conditions for Joining Mission*
+11. Leave Mission Button*
+12. Leave Mission Confirmation*
+
+`Note: Item 9 to 12 will only appear if mission subscription is enabled in developer portal`
 
 Clicking the mission item will display Mission Item Details:
 
 <img src="assets/mission-list-details-ja.png" alt="Mission Item Details" width="500"/>
 
 `Note: This UI will be displayed as a popup within your domain.`
+
+If mission subscription is enabled in the developer portal, a join mission button will appear:
+
+<img src="assets/join-mission-button.png" alt="Join Mission Button" width="500" />
+
+Clicking the Join Mission button will display Terms and Conditions Popup:
+
+<img src="assets/tnc-modal.png" alt="TnC Popup" width="500" />
+
+`Note: The terms and conditions message can be configured in the developer portal.`
+
+When user has joined the mission, a 'Leave Mission' text button will be available:
+
+<img src="assets/leave-mission-text.png" alt="Leave Mission Text" width="500" />
+
+Clicking the Leave Mission text will display a Confirmation Modal:
+
+<img src="assets/leave-modal.png" alt="Leave Confirmation Modal" width="500" />
 
 ## Point
 
@@ -134,6 +158,7 @@ In this UI, some informations will be displayed:
 6. Mission Achievement Date, ex. `2023/08/30`
 7. Mission Point, ex. `2 points`
 8. Claim Point Button
+
 
 ### Claim Point Popup
 
