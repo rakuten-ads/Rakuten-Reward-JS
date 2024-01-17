@@ -4,3 +4,15 @@ Initial Public Release. Will keep and fix this version until the SDK is stable.
 
 Fix:
 1. Change API requests flow when opening SDK Portal.
+
+## 1.1.0 (January 10, 2024)
+
+### Added
+
+- Join and Cancel functionality for Missions.
+
+### Details
+
+- Introduced the functionality to join and cancel missions.
+- No code changes are required; the feature can be enabled in the developer portal during mission creation.
+- See [README.md](./README.md#join-and-cancel-mission) for additional details.
