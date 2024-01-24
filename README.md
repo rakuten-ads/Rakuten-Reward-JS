@@ -61,14 +61,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/{{VERSION}}/missionsdk.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.0.0/missionsdk.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.1.0/missionsdk.js`
 
 ```html
 <header>
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.0.0/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.1.0/missionsdk.js"></script>
 </header>
 ```
 
@@ -427,27 +427,29 @@ rewardSDK
 ```
 
 ## Join and Cancel Mission
+
 From version 1.1.0 onwards, we support the join and cancel functionality for missions.
 
 There are no code changes required and this feature can be enabled in the developer portal during mission creation.
 
-### Set `hasSubscription` to Yes
+### Set `Does this mission require user's subscription` to Yes
 
 During mission creation in the developer portal, set the `Does this mission require user's subscription` parameter to 'Yes'. This step is essential to activate the join and cancel feature.
 
 ### Terms and Conditions
 
-Once `hasSubscription` is set to 'Yes', a terms and conditions field will automatically appear. Fill in the necessary details in this field.
+Once `Does this mission require user's subscription` is set to 'Yes', a terms and conditions field will automatically appear. Fill in the necessary details in this field.
 
 ### Joining and Exiting Missions
 
-With `hasSubscription` set to 'Yes' and the terms and conditions filled, users can then join and exit missions. The terms and conditions will be displayed during the join process.
+With `Does this mission require user's subscription` set to 'Yes' and the terms and conditions filled, users can then join and exit missions. The terms and conditions will be displayed during the join process.
 
 ### Persistent Progress
 
 If a user exits a mission and later decides to join the same mission again, their progress will be retained.
 
 ---
+
 <br />
 [For a more detailed UI, please refer to UI.MD](./UI.MD)
 
