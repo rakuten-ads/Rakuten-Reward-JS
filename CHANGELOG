@@ -1,6 +1,12 @@
-## 1.0.0 (November 16, 2023)
+## 1.2.0 (March 26, 2024)
 
-Initial Public Release. Will keep and fix this version until the SDK is stable.
+### Added
+
+- New API `displayConsentBanner` to notify users to accept Mission's User Consent. See details: [UI.md](./UI.md#user-consent-banner)
+
+### Updated
+
+- Change User Information UI in SDK Portal
 
 ## 1.1.0 (January 10, 2024)
 
@@ -14,3 +20,7 @@ Initial Public Release. Will keep and fix this version until the SDK is stable.
 - Introduced the functionality to join and cancel missions.
 - No code changes are required; the feature can be enabled in the developer portal during mission creation.
 - See [README.md](./README.md#join-and-cancel-mission) for additional details.
+
+## 1.0.0 (October 16, 2023)
+
+Initial Public Release. Will keep and fix this version until the SDK is stable.

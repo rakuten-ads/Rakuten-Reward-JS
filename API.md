@@ -13,6 +13,7 @@ Table of Contents
 - [Other Pages](#other-pages)
 - [Class Object](#class-object)
 - [Error Code](#error-codes)
+- [Other APIs](#other-apis)
 
 ## `Initialization`
 
@@ -78,9 +79,10 @@ Table of Contents
 
 ### `User Consent UI`
 
-| Function            | Async | Parameters                                          | Response | Description                                    |
-| ------------------- | ----- | --------------------------------------------------- | -------- | ---------------------------------------------- |
-| displayConsentPopup | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Void     | Display Mission SDK terms of use Consent Popup |
+| Function             | Async | Parameters                                          | Response | Description                                                    |
+| -------------------- | ----- | --------------------------------------------------- | -------- | -------------------------------------------------------------- |
+| displayConsentPopup  | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams)) | Void     | Display Mission SDK terms of use Consent Popup                 |
+| displayConsentBanner | Yes   | (callback?: (isAccepted: boolean))                  | Void     | Display Mission SDK Consent Banner that displays Consent Popup |
 
 <br /><br />
 
@@ -351,3 +353,10 @@ Table of Contents
 | `error_user_not_consent`                      | Unavailable For Legal Reasons                                         | User has not given their consent to Reward Mission SDK terms of usage. You need to accept the consent first by calling the [`displayConsentPopup`](#user-consent-ui) function to display User Consent Popup.                                 |
 | `error_not_initialized`                       | You have not initialized the SDK                                      | You haven't initialized Mission SDK. Please call SDK's [`init`](./README.md#initialize-mission-sdk) to initialize SDK and pass the required params                                                                                           |
 | `error_no_omni_refresh_access_token_function` | You don't provide a refresh access token function                     | You haven't provided a function to refresh the access token automatically. So please handle refresh access token from your side. Or your function throws an error.                                                                           |
+| `error_not_join_mission`                      | You haven't joined the mission                                        | User has not joined the mission yet. You need to ask users to join the mission in the Mission SDK Portal first before sending the log action request.                                                                                        |
+
+## `Other APIs`
+
+| Function   | Async | Parameters | Response | Description                 |
+| ---------- | ----- | ---------- | -------- | --------------------------- |
+| getVersion | No    | No         | string;  | JS SDK version, ex: `1.2.0` |
