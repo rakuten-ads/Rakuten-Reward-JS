@@ -69,7 +69,21 @@ How to use:
 rewardSDK.displayConsentPopup();
 ```
 
-Reference: [User Consent UI](./API.md#user-consent-ui)
+### User Consent Banner
+
+Display Mission SDK User's Consent Banner to introduce notify users to give user consent, clicking the button will display above User Consent Popup.
+
+<img src="assets/consent-banner-ja.png" alt="Mission SDK User Information" width="500"/>
+
+How to use:
+
+```javascript
+rewardSDK.displayConsentBanner((isAccepted) => {
+	console.log("isAccepted", isAccepted);
+});
+```
+
+Reference: [User Consent API](./API.md#user-consent-ui)
 
 ## Mission
 
@@ -99,10 +113,10 @@ In this UI, some informations will be displayed:
 6. Mission Progress
 7. Mission Point, ex. `2 points`
 8. Mission Conditions, ex. `Every day 100 times achievable`
-9. Join Mission Button*
-10. Terms and Conditions for Joining Mission*
-11. Leave Mission Button*
-12. Leave Mission Confirmation*
+9. Join Mission Button\*
+10. Terms and Conditions for Joining Mission\*
+11. Leave Mission Button\*
+12. Leave Mission Confirmation\*
 
 `Note: Item 9 to 12 will only appear if mission subscription is enabled in developer portal`
 
@@ -158,7 +172,6 @@ In this UI, some informations will be displayed:
 6. Mission Achievement Date, ex. `2023/08/30`
 7. Mission Point, ex. `2 points`
 8. Claim Point Button
-
 
 ### Claim Point Popup
 

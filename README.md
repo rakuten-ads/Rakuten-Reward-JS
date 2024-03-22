@@ -12,6 +12,8 @@ Table of Contents
 - [Get User Information](#get-user-information)
 - [API Reference](./API.md)
 - [FAQ](./FAQ.md)
+- [UI](./UI.md)
+- [CHANGELOG](./CHANGELOG)
 
 <br /><br />
 
@@ -61,14 +63,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/{{VERSION}}/missionsdk.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.1.0/missionsdk.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.2.0/missionsdk.js`
 
 ```html
 <header>
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.1.0/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.2.0/missionsdk.js"></script>
 </header>
 ```
 
@@ -432,17 +434,17 @@ From version 1.1.0 onwards, we support the join and cancel functionality for mis
 
 There are no code changes required and this feature can be enabled in the developer portal during mission creation.
 
-### Set `Does this mission require user's subscription` to Yes
+### Set `needsSubscription` to Yes
 
 During mission creation in the developer portal, set the `Does this mission require user's subscription` parameter to 'Yes'. This step is essential to activate the join and cancel feature.
 
 ### Terms and Conditions
 
-Once `Does this mission require user's subscription` is set to 'Yes', a terms and conditions field will automatically appear. Fill in the necessary details in this field.
+Once `needsSubscription` is set to 'Yes', a terms and conditions field will automatically appear. Fill in the necessary details in this field.
 
 ### Joining and Exiting Missions
 
-With `Does this mission require user's subscription` set to 'Yes' and the terms and conditions filled, users can then join and exit missions. The terms and conditions will be displayed during the join process.
+With `needsSubscription` set to 'Yes' and the terms and conditions filled, users can then join and exit missions. The terms and conditions will be displayed during the join process.
 
 ### Persistent Progress
 
