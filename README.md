@@ -44,7 +44,7 @@ Mission JS SDK requires users to logged in to Rakuten Auth first before being ab
 
 ## `Languages Supported`
 
-Mission SDK supports 2 languages: `ja` (japanese) & `en` (english), but `ja` is the default language. You can set the language to be used during the Mission SDK `init` [Initialize Mission SDK](#initialize-mission-sdk).
+Mission SDK supports these languages: `ja` (Japanese), `en` (English), `zh-TW` (Chinese Traditional), `zh-CN` (Chinese Simplified) and `ko-KR` (Korean). But `ja` is the default language. You can set the language to be used during the Mission SDK `init` [Initialize Mission SDK](#initialize-mission-sdk).
 
 ## `Responsive UI`
 
