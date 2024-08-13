@@ -17,6 +17,8 @@ Table of Contents
 - [I want every users to accept user consent before achieving any missions. How can I do that?](#i-want-every-users-to-accept-user-consent-before-achieving-any-missions-how-can-i-do-that)
 - [I want to keep the login state from my website to Mission JS SDK. How to handle if the token expired?](#i-want-to-keep-the-login-state-from-my-website-to-mission-js-sdk-how-to-handle-if-the-token-expired)
 - [I want log 1 action multiple times, e.g. 5 times. How can I do that?](#i-want-log-1-action-multiple-times-eg-5-times-how-can-i-do-that)
+- [I want to use RewardSDK in the React environment. How can I do that?](#i-want-to-use-rewardsdk-in-the-react-environment-how-can-i-do-that)
+- [How many languages does SDK support?](#how-many-languages-does-sdk-support)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
 
@@ -431,5 +433,53 @@ try {
 ```
 
 You can call the [`logActionMultipleTimes`](./API.md#mission-functions), and pass it with your actionCode and how many counts you want to log. The responses will be a list of each log action, so please check your product's needs if you require all log actions to be successfull.
+
+</details>
+
+## I want to use RewardSDK in the React environment. How can I do that?
+
+<details>
+<summary>Answer</summary>
+After installing the rakutenreward-js package, you can initialise it like this
+
+```javascript
+import RewardMissionSDK from "rakutenreward-js";
+
+useEffect(() => {
+	RewardMissionSDK.init({
+		appKey: "12345ABCDE",
+		language: "en",
+		successCallback: () => {
+			// Log action after initialization
+			RewardMissionSDK.logAction({ actionCode: "ABC123" });
+		},
+	});
+}, []);
+```
+
+</details>
+
+## How many languages does SDK support?
+
+<details>
+<summary>Answer</summary>
+Mission JS SDK supports these languages:
+
+| Language              | Code            | Note                                               |
+| --------------------- | --------------- | -------------------------------------------------- |
+| Japanese              | `ja` or `ja-JP` | Default Language in Mission JS SDK                 |
+| English               | `en`            |                                                    |
+| Chinese (Simplified)  | `zh-CN`         | Chinese (Simplified) mainly used in Mainland China |
+| Chinese (Traditional) | `zh-TW`         | Chinese (Traditional) mainly used in Taiwan        |
+| Korean                | `ko-KR`         | Korean                                             |
+
+You can pass the language preference during SDK initialization. And if you don't pass it, SDK will use the browser's language setting.
+
+```javascript
+RewardMissionSDK.init({
+	appKey: "12345ABCDE",
+	language: "ja", // or 'en', 'zh-TW'
+});
+```
 
 </details>

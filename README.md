@@ -84,7 +84,27 @@ After pasting the script, Mission SDK JS will be available and can be accessed i
 
 ## `Import package from npm`
 
-// WIP. Please use above import
+To install via npm, you can install the package directly via the command:
+
+```bash
+# With npm
+npm install rakutenreward-js
+```
+
+The current package version is 1.3.0 (There are no changes with 1.2.0)
+
+After installing the package, Mission SDK can be imported like this:
+
+```javascript
+import RewardMissionSDK from "rakutenreward-js";
+
+RewardMissionSDK.init({
+	// Input app key
+});
+```
+
+Click here to see an example of how to implement it in React:
+[I want to use RewardSDK in the React environment. How can I do that?](./FAQ.md#i-want-to-use-rewardsdk-in-the-react-environment-how-can-i-do-that)
 
 ## `Initialize Mission SDK`
 
@@ -98,6 +118,8 @@ rewardSDK.init({
 	language: "ja",
 });
 ```
+
+- Note, passing `language` is Optional. If you don't pass it, then SDK will use the browser's language setting, default to Japanese (`ja`).
 
 | function | async | parameters                              | response type | description            |
 | -------- | ----- | --------------------------------------- | ------------- | ---------------------- |
