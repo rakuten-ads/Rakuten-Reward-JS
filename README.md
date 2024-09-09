@@ -13,7 +13,7 @@ Table of Contents
 - [API Reference](./API.md)
 - [FAQ](./FAQ.md)
 - [UI](./UI.md)
-- [CHANGELOG](./CHANGELOG)
+- [CHANGELOG](./CHANGELOG.md)
 
 <br /><br />
 
