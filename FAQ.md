@@ -459,6 +459,16 @@ useEffect(() => {
 
 </details>
 
+## Is it possible to get Mission List without progress?
+<details>
+<summary>Answer</summary>
+To improve the performance of retrieving mission list, we have created a Mission List Lite API to retrieve mission list without progress.
+
+You can call the [`getMissionLite`](./API.md#mission-functions) to retrieve the list of missions without progress. 
+
+If you need the progress subsequently, we have also provided an additional API [`getMissionDetails`](./API.md#mission-functions) to retrieve the progress with the provided action code.
+</details>
+
 ## How many languages does SDK support?
 
 <details>

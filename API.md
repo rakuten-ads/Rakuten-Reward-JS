@@ -93,6 +93,8 @@ Table of Contents
 | Function               | Async | Parameters                                                                                                  | Response                                              | Description                     |
 | ---------------------- | ----- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
 | getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
+| getMissionsLite            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item Lite](#missionitem)[]                        | Returns list of Active Missions without progress |
+| getMissionDetails            | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)                        | Returns Mission based on actionCode|
 | logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
 | logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number)                                     | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
 
