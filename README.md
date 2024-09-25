@@ -379,6 +379,70 @@ const successCallback = () => console.log("Get Mission List success!");
 rewardSDK.getMissions({ successCallback });
 ```
 
+## `Get Mission List Without Progress`
+
+```javascript
+rewardSDK.getMissionsLite(options?: SDKCallbackParams): MissionItem[]
+```
+
+| function    | async | parameters                                                 | response type                         | description          |
+| ----------- | ----- | ---------------------------------------------------------- | ------------------------------------- | -------------------- |
+| getMissionsLite | yes   | [SDKCallbackParams](./API.md#sdkcallbackparams) (Optional) | [MissionItem](./API.md#missionitem)[] | List of Mission Item without Progress |
+
+Usage Example:
+
+```javascript
+// async/await supported
+const missionList = await rewardSDK.getMissionsLite();
+
+// Promise-based
+rewardSDK
+  .getMissionsLite()
+  .then((missionList) => {
+    console.log(missionList);
+  })
+  .catch((err) => {
+    // failed to get mission list
+  });
+
+// with callback
+const successCallback = (missionLiteList) => console.log('Get Mission List success!', missionLiteList);
+rewardSDK.getMissionsLite({ successCallback });
+```
+
+## `Get Mission Details`
+
+This returns the specific mission given the action code, including the progress.
+
+```javascript
+rewardSDK.getMissionDetails(missionActionData: MissionActionData, options?: SDKCallbackParams): MissionItem;
+```
+
+| function  | async | parameters                                                                                                     | response type                                               | description                                     |
+| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
+| getMissionDetails | yes   | ([MissionActionData](./API.md#missionactiondata), [SDKCallbackParams](./API.md#sdkcallbackparams): [Optional]) | [MissionItem](./API.md#missionitem) | Return specific mission given the action code, including the progress |
+
+Usage Example:
+
+```javascript
+// async/await supported
+const missionDetails = await rewardSDK.getMissionDetails({ actionCode: 'ABCDEFGH123' });
+
+// Promise-based
+rewardSDK
+  .getMissionDetails({ actionCode: 'ABCDEFGH123' })
+  .then((missionDetail) => {
+    console.log(missionDetail);
+  })
+  .catch((err) => {
+    // failed to get mission list
+  });
+
+// with callback
+const successCallback = (missionDetails) => console.log('Get Mission Details success!', missionDetails);
+rewardSDK.getMissionDetails({ actionCode: 'ABCDEFGH123' }, { successCallback });
+```
+
 ## `Log Action`
 
 To log action, you need to call Log Action API.
