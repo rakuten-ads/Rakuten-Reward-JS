@@ -63,14 +63,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/{{VERSION}}/missionsdk.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.3.0/missionsdk.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.4.0/missionsdk.js`
 
 ```html
 <header>
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.3.0/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.4.0/missionsdk.js"></script>
 </header>
 ```
 
@@ -91,7 +91,7 @@ To install via npm, you can install the package directly via the command:
 npm install rakutenreward-js
 ```
 
-The current package version is 1.3.0
+The current package version is 1.4.0
 
 After installing the package, Mission SDK can be imported like this:
 
