@@ -33,7 +33,7 @@ Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/0.0.1/miss
   ></script>
 </header>
 ```
-After pasting the script, Mission SDK JS will be available and can be accessed in the window object, through the RewardMissionSDK variable.
+After pasting the script, Mission SDK JS will be available and can be accessed in the window object, through the RakutenRewardExt variable.
 
 ```html
 <script>
@@ -87,7 +87,7 @@ rewardSDKExt.openSdkPortal(): void
 
 | function  | async | parameters                                                                                                     | response type                                               | description                                     |
 | --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| logAction | yes   |  | | Triggers native API to open SDK Portal|
+| openSdkPortal | yes   |  | | Triggers native API to open SDK Portal|
 
 ## `Open SPS Portal`
 
@@ -98,4 +98,8 @@ rewardSDKExt.openSpsPortal(): void
 
 | function  | async | parameters                                                                                                     | response type                                               | description                                     |
 | --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| logAction | yes   | | | Triggers native API to open SPS Portal|
+| openSpsPortal | yes   | | | Triggers native API to open SPS Portal|
+  
+---
+Language :
+> [![ja](../assets/lang/ja.png)](./ja/README.md)
