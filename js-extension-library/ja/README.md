@@ -2,7 +2,7 @@
 
 [![Language](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-楽天リワードJS拡張ライブラリは、ネイティブモバイルアプリのWebView内で読み込まれるウェブページとネイティブAPIを橋渡しするために設計されています。これにより、ウェブベースのインターフェースがネイティブの機能と直接対話できるようになります。
+楽天リワードJS拡張ライブラリは、モバイルアプリのWebView内で読み込まれるウェブページとネイティブAPIを橋渡しするために設計されています。これにより、Webのインターフェースがモバイルネイティブの機能と直接疎通できるようになります。	
 
 
 コンテンツ
@@ -16,9 +16,9 @@
 
 # インストール
 
-## スクリプトタグを介してファイルをインポート
+## スクリプトタグを通してファイルをインポート
 
-スクリプトを介してインストールするには、以下の`<script>`タグを`<header>`タグ内に貼り付けて、JS SDKファイルをインポートします。
+スクリプトを通してインストールするには、以下の`<script>`タグを`<header>`タグ内に貼り付けて、JS SDKファイルをインポートします。
 
 ソースファイル: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/{{VERSION}}/missionsdk-ext.js`<br />
 
@@ -33,7 +33,8 @@
   ></script>
 </header>
 ```
-スクリプトを貼り付けた後、Mission SDK JSは利用可能になり、RakutenRewardExt 変数を通じてウィンドウオブジェクト内でアクセスできます。  
+
+スクリプトを貼り付けた後、Mission SDK JSが利用可能になります。アクセスには、RakutenRewardExt 変数を通じてウィンドウオブジェクト内にてアクセスできるようになります。
 
 ```html
 <script>
@@ -42,7 +43,7 @@
 ```
 
 ## プラットフォームの設定
-APIメソッドを使用する前に、OSプラットフォーム `Android` または `iOS` を適切に設定する必要があります。  
+APIメソッドを使用する前に、OSプラットフォーム `Android` または `iOS` を設定する必要があります。
 
 ```html
 <script>
@@ -56,7 +57,7 @@ APIメソッドを使用する前に、OSプラットフォーム `Android` ま�
 
 # APIメソッド  
 
-## プラットフォームの設定  
+## プラットフォームの設定
 
 ```javascript
 rewardSDKExt.setPlatform(platform: "android" | "ios"): void
@@ -66,7 +67,7 @@ rewardSDKExt.setPlatform(platform: "android" | "ios"): void
 | --- | --- | --- | --- | --- |
 | logAction | はい   | (platform: "android" \| "ios") | | ネイティブAPIをトリガーする前にプラットフォームを設定 |
 
-## アクションを送信する
+## アクションログのネイティブAPIをトリガーする
 
 ```javascript
 rewardSDKExt.logAction(actionCode: string): void
@@ -76,7 +77,7 @@ rewardSDKExt.logAction(actionCode: string): void
 | --- | --- | --- | --- | --- |
 | logAction | はい   | (actionCode: string) | | アクションログのネイティブAPIをトリガー |
 
-## SDKポータルを開く
+## SDKポータルを開くネイティブAPIをトリガーする
 
 ```javascript
 rewardSDKExt.openSdkPortal(): void
@@ -86,7 +87,7 @@ rewardSDKExt.openSdkPortal(): void
 | --- | --- | --- | --- | --- |
 | openSdkPortal | はい   |  | | SDKポータルを開くネイティブAPIをトリガー |
 
-## SPSポータルを開く
+## SPSポータルを開くネイティブAPIをトリガーする
 
 ```javascript
 rewardSDKExt.openSpsPortal(): void
