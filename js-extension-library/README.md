@@ -65,7 +65,7 @@ rewardSDKExt.setPlatform(platform: "android" | "ios"): void
 
 | function  | async | parameters                                                                                                     | response type                                               | description                                     |
 | --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| logAction | yes   | (platform: "android" \| "ios") | | Set the platform before triggering the native API |
+| setPlatform | yes   | (platform: "android" \| "ios") | | Set the platform before triggering the native API |
 
 ## `Log Action`
 
