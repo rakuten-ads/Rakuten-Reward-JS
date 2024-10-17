@@ -22,14 +22,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/{{VERSION}}/missionsdk-ext.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/0.0.1/missionsdk-ext.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js`
 
 ```html
 <header>
   // ... put this before the end of header tag
   <script
     type="text/javascript"
-    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/0.0.1/missionsdk-ext.js"
+    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js"
   ></script>
 </header>
 ```

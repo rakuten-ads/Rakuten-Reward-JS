@@ -22,14 +22,14 @@
 
 ソースファイル: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/{{VERSION}}/missionsdk-ext.js`<br />
 
-最新バージョン: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/0.0.1/missionsdk-ext.js`
+最新バージョン: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js`
 
 ```html
 <header>
   // ... ヘッダータグの終了前にこれを配置
   <script
     type="text/javascript"
-    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/0.0.1/missionsdk-ext.js"
+    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js"
   ></script>
 </header>
 ```
