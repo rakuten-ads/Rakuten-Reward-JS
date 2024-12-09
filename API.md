@@ -90,13 +90,13 @@ Table of Contents
 
 ### `Mission Functions`
 
-| Function               | Async | Parameters                                                                                                  | Response                                              | Description                     |
-| ---------------------- | ----- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------- |
-| getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)[]                        | Returns list of Active Missions |
-| getMissionsLite            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item Lite](#missionitem)[]                        | Returns list of Active Missions without progress |
-| getMissionDetails            | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)                        | Returns Mission based on actionCode|
-| logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
-| logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number)                                     | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response     |
+| Function               | Async | Parameters                                                                                                  | Response                                              | Description                                      |
+| ---------------------- | ----- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
+| getMissions            | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item](#missionitem)[]                        | Returns list of Active Missions                  |
+| getMissionsLite        | Yes   | (options?: [SDKCallbackParams](#sdkcallbackparams))                                                         | [Mission Item Lite](#missionitem)[]                   | Returns list of Active Missions without progress |
+| getMissionDetails      | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [Mission Item](#missionitem)                          | Returns Mission based on actionCode              |
+| logAction              | Yes   | (missionAction: [MissionActionData](#missionactiondata), options?: [SDKCallbackParams](#sdkcallbackparams)) | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response                      |
+| logActionMultipleTimes | Yes   | (missionAction: [MissionActionData](#missionactiondata), times: number)                                     | [MissionLogActionResponse](#missionlogactionresponse) | Returns log action response                      |
 
 ### `Mission UI`
 
@@ -222,7 +222,6 @@ Table of Contents
 | adportalUrl            | string | ''            | URL for displaying Ad Portal Ads           |
 | missionadbanner_50Url  | string | ''            | URL for displaying Notification Banner 50  |
 | missionadbanner_250Url | string | ''            | URL for displaying Notification Banner 250 |
-| poikatsuUrl            | string | ''            | URL for displaying Poikatsu Ads            |
 
 ### MemberInformation
 
@@ -251,6 +250,21 @@ Table of Contents
 | reachedCap       | boolean                               | 0             | Is Mission Already Reached Cap                                         |
 | times            | number                                | 0             | Mission Maximum Achievements Allowed                                   |
 | progress         | number                                | 0             | Mission Achievement's Progress                                         |
+
+### MissionItemLite
+
+| Key              | Type                                  | Default Value | Description                                                            |
+| ---------------- | ------------------------------------- | ------------- | ---------------------------------------------------------------------- |
+| actionCode       | string                                | ''            | Mission Action Code, from Developer Portal                             |
+| type             | string                                | ''            | Mission Type                                                           |
+| iconurl          | string                                | ''            | URL for Mission Icon                                                   |
+| instruction      | string                                | ''            | Mission Instruction                                                    |
+| condition        | string                                | ''            | Mission Condition                                                      |
+| notificationtype | [NotificationType](#notificationtype) | 'NONE'        | Mission Notification Banner Type                                       |
+| point            | number                                | 0             | Points for Achieving Mission                                           |
+| end              | datetime                              | ''            | Mission End Date Time                                                  |
+| enddatestr       | string                                | ''            | Mission End Date in String Format. Format: `YYYYMMDD`, e.g. `20231231` |
+| times            | number                                | 0             | Mission Maximum Achievements Allowed                                   |
 
 ### MissionItemComplete
 

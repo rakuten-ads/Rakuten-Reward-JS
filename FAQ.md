@@ -18,6 +18,7 @@ Table of Contents
 - [I want to keep the login state from my website to Mission JS SDK. How to handle if the token expired?](#i-want-to-keep-the-login-state-from-my-website-to-mission-js-sdk-how-to-handle-if-the-token-expired)
 - [I want log 1 action multiple times, e.g. 5 times. How can I do that?](#i-want-log-1-action-multiple-times-eg-5-times-how-can-i-do-that)
 - [I want to use RewardSDK in the React environment. How can I do that?](#i-want-to-use-rewardsdk-in-the-react-environment-how-can-i-do-that)
+- [Is it possible to get Mission List without progress?](#is-it-possible-to-get-mission-list-without-progress)
 - [How many languages does SDK support?](#how-many-languages-does-sdk-support)
 
 ## Does Mission JS SDK uses any Front End Framework, like React, Vue, or Angular?
@@ -460,13 +461,15 @@ useEffect(() => {
 </details>
 
 ## Is it possible to get Mission List without progress?
+
 <details>
 <summary>Answer</summary>
 To improve the performance of retrieving mission list, we have created a Mission List Lite API to retrieve mission list without progress.
 
-You can call the [`getMissionLite`](./API.md#mission-functions) to retrieve the list of missions without progress. 
+You can call the [`getMissionLite`](./API.md#mission-functions) to retrieve the list of missions without progress.
 
 If you need the progress subsequently, we have also provided an additional API [`getMissionDetails`](./API.md#mission-functions) to retrieve the progress with the provided action code.
+
 </details>
 
 ## How many languages does SDK support?

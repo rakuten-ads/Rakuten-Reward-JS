@@ -190,8 +190,7 @@ Display Mission SDK Portal that has of several menus:
 1. Home
 2. Mission List
 3. Unclaimed Points List
-4. Poikatsu
-5. Others
+4. Others
 
 <img src="assets/sdk-portal-ja.png" alt="Mission Item Details" width="600"/>
 

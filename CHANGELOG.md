@@ -1,10 +1,15 @@
+## 1.5.0 (December 19, 2024)
+
+### Added
+
+- Removed Adblocker Tracking
+
 ## 1.4.0 (September 19, 2024)
 
 ### Added
 
 - New API `getMissionLite` to retrieve missions without progress.
 - New API `getMissionDetails` to retrieve details of a mission including it's progress.
-- See Details: [API.md](./API.md#mission)
 
 ## 1.3.0 (August 8, 2024)
 
@@ -14,8 +19,6 @@
 - Language used in SDK can be updated in real-time.
 
 ## 1.2.0 (March 26, 2024)
-
-
 
 ### Added
 
