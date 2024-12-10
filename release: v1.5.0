@@ -70,7 +70,7 @@ Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.5.0/missio
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.2.0/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.5.0/missionsdk.js"></script>
 </header>
 ```
 
