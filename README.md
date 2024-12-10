@@ -44,7 +44,7 @@ Mission JS SDK requires users to logged in to Rakuten Auth first before being ab
 
 ## `Languages Supported`
 
-Mission SDK supports these languages: `ja` (Japanese), `en` (English), `zh-TW` (Chinese Traditional), `zh-CN` (Chinese Simplified) and `ko-KR` (Korean). But `ja` is the default language. You can set the language to be used during the Mission SDK `init` [Initialize Mission SDK](#initialize-mission-sdk).
+Mission SDK supports 2 languages: `ja` (japanese) & `en` (english), but `ja` is the default language. You can set the language to be used during the Mission SDK `init` [Initialize Mission SDK](#initialize-mission-sdk).
 
 ## `Responsive UI`
 
@@ -63,14 +63,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/{{VERSION}}/missionsdk.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.4.0/missionsdk.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.5.0/missionsdk.js`
 
 ```html
 <header>
 	// ... put this before the end of header tag
 	<script
 		type="text/javascript"
-		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.4.0/missionsdk.js"></script>
+		src="https://portal.reward.rakuten.co.jp/sdk-static/sdk/1.2.0/missionsdk.js"></script>
 </header>
 ```
 
@@ -91,7 +91,7 @@ To install via npm, you can install the package directly via the command:
 npm install rakutenreward-js
 ```
 
-The current package version is 1.4.0
+The current package version is 1.3.0 (There are no changes with 1.2.0)
 
 After installing the package, Mission SDK can be imported like this:
 
@@ -379,14 +379,14 @@ const successCallback = () => console.log("Get Mission List success!");
 rewardSDK.getMissions({ successCallback });
 ```
 
-## `Get Mission List Without Progress`
+## `Get Mission List Lite`
 
 ```javascript
 rewardSDK.getMissionsLite(options?: SDKCallbackParams): MissionItem[]
 ```
 
-| function    | async | parameters                                                 | response type                         | description          |
-| ----------- | ----- | ---------------------------------------------------------- | ------------------------------------- | -------------------- |
+| function        | async | parameters                                                 | response type                         | description                           |
+| --------------- | ----- | ---------------------------------------------------------- | ------------------------------------- | ------------------------------------- |
 | getMissionsLite | yes   | [SDKCallbackParams](./API.md#sdkcallbackparams) (Optional) | [MissionItem](./API.md#missionitem)[] | List of Mission Item without Progress |
 
 Usage Example:
@@ -397,16 +397,17 @@ const missionList = await rewardSDK.getMissionsLite();
 
 // Promise-based
 rewardSDK
-  .getMissionsLite()
-  .then((missionList) => {
-    console.log(missionList);
-  })
-  .catch((err) => {
-    // failed to get mission list
-  });
+	.getMissionsLite()
+	.then((missionList) => {
+		console.log(missionList);
+	})
+	.catch((err) => {
+		// failed to get mission list
+	});
 
 // with callback
-const successCallback = (missionLiteList) => console.log('Get Mission List success!', missionLiteList);
+const successCallback = (missionLiteList) =>
+	console.log("Get Mission List success!", missionLiteList);
 rewardSDK.getMissionsLite({ successCallback });
 ```
 
@@ -418,29 +419,26 @@ This returns the specific mission given the action code, including the progress.
 rewardSDK.getMissionDetails(missionActionData: MissionActionData, options?: SDKCallbackParams): MissionItem;
 ```
 
-| function  | async | parameters                                                                                                     | response type                                               | description                                     |
-| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| getMissionDetails | yes   | ([MissionActionData](./API.md#missionactiondata), [SDKCallbackParams](./API.md#sdkcallbackparams): [Optional]) | [MissionItem](./API.md#missionitem) | Return specific mission given the action code, including the progress |
-
 Usage Example:
 
 ```javascript
 // async/await supported
-const missionDetails = await rewardSDK.getMissionDetails({ actionCode: 'ABCDEFGH123' });
+const missionDetails = await rewardSDK.getMissionDetails({ actionCode: "ABCDEFGH123" });
 
 // Promise-based
 rewardSDK
-  .getMissionDetails({ actionCode: 'ABCDEFGH123' })
-  .then((missionDetail) => {
-    console.log(missionDetail);
-  })
-  .catch((err) => {
-    // failed to get mission list
-  });
+	.getMissionDetails({ actionCode: "ABCDEFGH123" })
+	.then((missionDetail) => {
+		console.log(missionDetail);
+	})
+	.catch((err) => {
+		// failed to get mission list
+	});
 
 // with callback
-const successCallback = (missionDetails) => console.log('Get Mission Details success!', missionDetails);
-rewardSDK.getMissionDetails({ actionCode: 'ABCDEFGH123' }, { successCallback });
+const successCallback = (missionDetails) =>
+	console.log("Get Mission Details success!", missionDetails);
+rewardSDK.getMissionDetails({ actionCode: "ABCDEFGH123" }, { successCallback });
 ```
 
 ## `Log Action`
@@ -697,9 +695,9 @@ rewardSDK.getCurrentPoints({ successCallback });
 rewardSDK.displaySDKPortal(tab?: String, options?: SDKCallbackParams): Void
 ```
 
-| function         | async | parameters                                                                                                                | response type | description            |
-| ---------------- | ----- | ------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------- |
-| displaySDKPortal | no    | (tab: `('home', 'mission', 'unclaimed', 'poikatsu', 'more')`, [SDKCallbackParams](./API.md#sdkcallbackparams) (Optional)) | Void          | Open Reward SDK Portal |
+| function         | async | parameters                                                                                                    | response type | description            |
+| ---------------- | ----- | ------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------- |
+| displaySDKPortal | no    | (tab: `('home', 'mission', 'unclaimed', 'more')`, [SDKCallbackParams](./API.md#sdkcallbackparams) (Optional)) | Void          | Open Reward SDK Portal |
 
 Usage Example:
 
@@ -760,13 +758,21 @@ rewardSDK.acceptConsent({ successCallback });
 rewardSDK.displayConsentPopup(options?: SDKCallbackParams): Void
 ```
 
-| function            | async | parameters                                                 | response type | description               |
-| ------------------- | ----- | ---------------------------------------------------------- | ------------- | ------------------------- |
-| displayConsentPopup | yes   | [SDKCallbackParams](./API.md#sdkcallbackparams) (Optional) | void          | Open User Consent's Popup |
+| function            | async | parameters                               | response type |
+| ------------------- | ----- | ---------------------------------------- | ------------- |
+| displayConsentPopup | yes   | `DisplayConsentPopupCallback` (Optional) | void          |
+
+`DisplayConsentPopupCallback`
+
+| Key             | Type     | Mandatory | Default Value | Description                                               |
+| --------------- | -------- | --------- | ------------- | --------------------------------------------------------- |
+| successCallback | Function | Optional  | undefined     | Function to be called after the user accepted the Consent |
+| closeCallback   | Function | Optional  | undefined     | Function to be called after the user rejected the Consent |
 
 Usage Example:
 
 ```javascript
-const successCallback = () => console.log("Open Consent Popup success!");
-rewardSDK.displayConsentPopup({ successCallback });
+const successCallback = () => console.log("User accepted the consent");
+const closeCallback = () => console.log("User rejected the consent");
+rewardSDK.displayConsentPopup({ successCallback, closeCallback });
 ```
