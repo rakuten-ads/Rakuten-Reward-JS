@@ -4,13 +4,11 @@
 
 The Rakuten Reward JS Extension Library is designed to bridge web pages loaded within native mobile app WebViews with native APIs. This allows web-based interfaces to interact directly with native functionalities, such as logging actions or triggering native events from web page elements.
 
-
 Table of Contents
 
 - [Installation](#installations)
-- [API Methods](#api-methods) 
+- [API Methods](#api-methods)
 - [CHANGELOG](./CHANGELOG)
-
 
 <br />
 
@@ -22,18 +20,19 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/{{VERSION}}/missionsdk-ext.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js`
 
 ```html
 <header>
   // ... put this before the end of header tag
   <script
     type="text/javascript"
-    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.0.0/missionsdk-ext.js"
+    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js"
   ></script>
 </header>
 ```
-After pasting the script, Mission SDK JS will be available and can be accessed in the window object, through the RakutenRewardExt variable.
+
+After pasting the script, Mission SDK JS will be available and can be accessed in the window object, through the RewardMissionSDK variable.
 
 ```html
 <script>
@@ -42,15 +41,16 @@ After pasting the script, Mission SDK JS will be available and can be accessed i
 ```
 
 ## `Setting platform`
+
 Before we can use the API methods, we have to set the OS platform `Android` or `iOS` accordingly.
 
 ```html
 <script>
-    // Setting platform for Android
-    rewardSDKExt.setPlatform("android");
-    
-    // Setting iOS Platform
-    rewardSDKExt.setPlatform("ios");
+  // Setting platform for Android
+  rewardSDKExt.setPlatform('android');
+
+  // Setting iOS Platform
+  rewardSDKExt.setPlatform('ios');
 </script>
 ```
 
@@ -58,48 +58,71 @@ Before we can use the API methods, we have to set the OS platform `Android` or `
 
 ## `Set Platform`
 
-
 ```javascript
 rewardSDKExt.setPlatform(platform: "android" | "ios"): void
 ```
 
-| function  | async | parameters                                                                                                     | response type                                               | description                                     |
-| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| setPlatform | yes   | (platform: "android" \| "ios") | | Set the platform before triggering the native API |
+| function  | async | parameters                     | response type | description                                       |
+| --------- | ----- | ------------------------------ | ------------- | ------------------------------------------------- |
+| logAction | yes   | (platform: "android" \| "ios") |               | Set the platform before triggering the native API |
 
 ## `Log Action`
-
 
 ```javascript
 rewardSDKExt.logAction(actionCode: string): void
 ```
 
-| function  | async | parameters                                                                                                     | response type                                               | description                                     |
-| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| logAction | yes   | (actionCode: string) | | Triggers log action native API|
+| function  | async | parameters           | response type | description                    |
+| --------- | ----- | -------------------- | ------------- | ------------------------------ |
+| logAction | yes   | (actionCode: string) |               | Triggers log action native API |
 
 ## `Open SDK Portal`
-
 
 ```javascript
 rewardSDKExt.openSdkPortal(): void
 ```
 
-| function  | async | parameters                                                                                                     | response type                                               | description                                     |
-| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| openSdkPortal | yes   |  | | Triggers native API to open SDK Portal|
+| function  | async | parameters | response type | description                            |
+| --------- | ----- | ---------- | ------------- | -------------------------------------- |
+| logAction | yes   |            |               | Triggers native API to open SDK Portal |
 
 ## `Open SPS Portal`
-
 
 ```javascript
 rewardSDKExt.openSpsPortal(): void
 ```
 
-| function  | async | parameters                                                                                                     | response type                                               | description                                     |
-| --------- | ----- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| openSpsPortal | yes   | | | Triggers native API to open SPS Portal|
-  
----
-Language :
-> [![ja](../assets/lang/ja.png)](./ja/README.md)
+| function  | async | parameters | response type | description                            |
+| --------- | ----- | ---------- | ------------- | -------------------------------------- |
+| logAction | yes   |            |               | Triggers native API to open SPS Portal |
+
+## `Get User Points History`
+
+```javascript
+rewardSDKExt.getPointHistory((point: unknown) => {
+  console.log('Points History:', point); // [{ points: 1, month: '202504' }, ...]
+});
+```
+
+| function        | async | parameters                 | response type | description              |
+| --------------- | ----- | -------------------------- | ------------- | ------------------------ |
+| getPointHistory | yes   | callback<`PointHistory`[]> | void          | Get users points history |
+
+### `PointHistory`
+
+| Key    | Type    | Mandatory | Default Value | Description                         | Example Value |
+| ------ | ------- | --------- | ------------- | ----------------------------------- | ------------- |
+| points | Integer | Yes       | 0             | Points earned in the specific month | 1             |
+| month  | String  | Yes       | ''            | Month of the points earned          | '202504'      |
+
+## `Get User Reward Points`
+
+```javascript
+rewardSDKExt.getUserRewardPoint((points: number) => {
+  console.log('Reward Points:', points); // 10
+});
+```
+
+| function           | async | parameters       | response type | description             |
+| ------------------ | ----- | ---------------- | ------------- | ----------------------- |
+| getUserRewardPoint | yes   | callback<number> | void          | Get users reward points |
