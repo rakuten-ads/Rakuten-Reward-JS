@@ -54,6 +54,54 @@ Before we can use the API methods, we have to set the OS platform `Android` or `
 </script>
 ```
 
+## `Implementation Example`
+
+```html
+<header>
+  <script
+    type="text/javascript"
+    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js"
+  ></script>
+</header>
+
+<body>
+  <script>
+    // Wait for the script to load before running ensureMissionIsSet
+    function ensureMissionIsSet(timeout) {
+      const start = new Date().getTime();
+  
+      function waitForMission(resolve, reject) {
+        const sdk = window.RakutenRewardExt || {};
+  
+        if (sdk && typeof sdk.setPlatform === 'function') {
+          resolve();
+        } else if (timeout && new Date().getTime() - start >= timeout) {
+          reject(new Error("timeout"));
+        } else {
+          setTimeout(() => waitForMission(resolve, reject), 100);
+        }
+      }
+  
+      return new Promise(waitForMission);
+    }
+    window.ensureMissionIsSet = ensureMissionIsSet;
+  
+    ensureMissionIsSet(10000).then(() => {
+      const sdk = window.RakutenRewardExt;
+      console.log("Mission SDK loaded:", sdk);
+  
+      const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+
+      sdk.setPlatform(isIos ? 'ios' : 'android');
+      sdk.logAction('ABCDE12345');
+    }).catch((err) => {
+      console.error("Mission SDK failed to load:", err);
+    });
+  </script>
+</body>
+
+```
+
 # `API Methods`
 
 ## `Set Platform`
