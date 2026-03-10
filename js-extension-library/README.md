@@ -20,14 +20,14 @@ To install via script, import our JS SDK file by pasting the following `<script>
 
 Source file: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/{{VERSION}}/missionsdk-ext.js`<br />
 
-Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js`
+Latest version: `https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.2.0/missionsdk-ext.js`
 
 ```html
 <header>
   // ... put this before the end of header tag
   <script
     type="text/javascript"
-    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js"
+    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.2.0/missionsdk-ext.js"
   ></script>
 </header>
 ```
@@ -52,54 +52,6 @@ Before we can use the API methods, we have to set the OS platform `Android` or `
   // Setting iOS Platform
   rewardSDKExt.setPlatform('ios');
 </script>
-```
-
-## `Implementation Example`
-
-```html
-<header>
-  <script
-    type="text/javascript"
-    src="https://portal.reward.rakuten.co.jp/sdk-static/jsext/1.1.0/missionsdk-ext.js"
-  ></script>
-</header>
-
-<body>
-  <script>
-    // Wait for the script to load before running ensureMissionIsSet
-    function ensureMissionIsSet(timeout) {
-      const start = new Date().getTime();
-  
-      function waitForMission(resolve, reject) {
-        const sdk = window.RakutenRewardExt || {};
-  
-        if (sdk && typeof sdk.setPlatform === 'function') {
-          resolve();
-        } else if (timeout && new Date().getTime() - start >= timeout) {
-          reject(new Error("timeout"));
-        } else {
-          setTimeout(() => waitForMission(resolve, reject), 100);
-        }
-      }
-  
-      return new Promise(waitForMission);
-    }
-    window.ensureMissionIsSet = ensureMissionIsSet;
-  
-    ensureMissionIsSet(10000).then(() => {
-      const sdk = window.RakutenRewardExt;
-      console.log("Mission SDK loaded:", sdk);
-  
-      const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-
-      sdk.setPlatform(isIos ? 'ios' : 'android');
-      sdk.logAction('ABCDE12345');
-    }).catch((err) => {
-      console.error("Mission SDK failed to load:", err);
-    });
-  </script>
-</body>
-
 ```
 
 # `API Methods`
@@ -174,3 +126,79 @@ rewardSDKExt.getUserRewardPoint((points: number) => {
 | function           | async | parameters       | response type | description             |
 | ------------------ | ----- | ---------------- | ------------- | ----------------------- |
 | getUserRewardPoint | yes   | callback<number> | void          | Get users reward points |
+
+## `Get LinkShare Point History`
+
+```javascript
+const requestData = {
+  tenantId: 'your-tenant-id',
+  appName: 'your-app-name'
+};
+rewardSDKExt.getLSPointHistory(requestData, 0, 20, (history) => {
+  console.log('LinkShare Point History:', history);
+  // {
+  //   "total": 2,
+  //   "offset": 0,
+  //   "limit": 20,
+  //   "history": [
+  //     {
+  //       "point": 150,
+  //       "advertiser": "Rakuten Fashion",
+  //       "grantDate": "2025-12-10",
+  //       "transactionDate": "2025-12-05",
+  //       "orderId": "ORDER-2025-001234",
+  //       "tncUrl": "https://example.com/terms-and-conditions",
+  //       "isPointGranted": true
+  //     }
+  //   ]
+  // }
+});
+```
+
+| function           | async | parameters                                                         | response type | description                          |
+| ------------------ | ----- | ------------------------------------------------------------------ | ------------- | ------------------------------------ |
+| getLSPointHistory  | yes   | (requestData: RewardRedeemRequest, offset: number, limit: number, callback\<LSPointHistory\>) | void          | Get LinkShare point history with pagination |
+
+### `RewardRedeemRequest`
+
+| Key      | Type   | Description                                    |
+| -------- | ------ | ---------------------------------------------- |
+| tenantId | String | Tenant ID                                      |
+| appName  | String | Application name                               |
+
+### `LSPointHistory`
+
+| Key     | Type                   | Description                                    |
+| ------- | ---------------------- | ---------------------------------------------- |
+| total   | Integer                | Total number of history items                  |
+| offset  | Integer                | Current offset for pagination                  |
+| limit   | Integer                | Number of items per page                       |
+| history | `LSPointHistoryItem[]` | Array of point history items                   |
+
+### `LSPointHistoryItem`
+
+| Key             | Type    | Description                                    |
+| --------------- | ------- | ---------------------------------------------- |
+| point           | Integer | Points earned                                  |
+| advertiser      | String  | Name of the advertiser                         |
+| grantDate       | String  | Date when points were granted (YYYY-MM-DD)     |
+| transactionDate | String  | Date of the transaction (YYYY-MM-DD)           |
+| orderId         | String  | Order ID                                       |
+| tncUrl          | String  | Terms and conditions URL                       |
+| isPointGranted  | Boolean | Whether points have been granted               |
+
+## `Get LinkShare Processing Point`
+
+```javascript
+const requestData = {
+  tenantId: 'your-tenant-id',
+  appName: 'your-app-name'
+};
+rewardSDKExt.getLSProcessingPoint(requestData, (points) => {
+  console.log('LinkShare Processing Points:', points); // 28
+});
+```
+
+| function              | async | parameters                                        | response type | description                       |
+| --------------------- | ----- | ------------------------------------------------- | ------------- | --------------------------------- |
+| getLSProcessingPoint  | yes   | (requestData: RewardRedeemRequest, callback\<number\>) | void          | Get LinkShare processing points   |
