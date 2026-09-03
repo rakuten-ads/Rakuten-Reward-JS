@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Get changed doc files
         id: changed
@@ -30,7 +30,13 @@ jobs:
           if [ -n "${{ github.event.inputs.files }}" ]; then
             CHANGED="${{ github.event.inputs.files }}"
           else
-            CHANGED=$(git diff --name-only HEAD~1 HEAD -- README.md API.md UI.md FAQ.md 'js-extension-library/**' \
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.event.after }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              BEFORE="HEAD~1"
+              AFTER="HEAD"
+            fi
+            CHANGED=$(git diff --name-only "$BEFORE" "$AFTER" -- README.md API.md UI.md FAQ.md 'js-extension-library/**' \
               | grep '\.md$' \
               | grep -v 'CHANGELOG' \
               | tr '\n' ' ')
