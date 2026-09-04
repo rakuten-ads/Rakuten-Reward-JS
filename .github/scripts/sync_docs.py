@@ -81,6 +81,9 @@ CONFLUENCE_MAPPING = {
     "js-extension-library/README.md": [
         {"id": "6863539159", "title": "10 - JavaScript Extension | 🌐 JavaScript"},
     ],
+    "FAQ.md": [
+        {"id": "6897972016", "title": "14 - FAQ | 🌐 JavaScript"},
+    ],
 }
 
 SYSTEM_PROMPT = """You are a technical documentation editor for the Rakuten Reward JavaScript SDK.
